@@ -1,0 +1,11 @@
+A:\Documentos 2Do Disco\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\bin\Debug\netstandard2.0\CFDI4.0.deps.json
+A:\Documentos 2Do Disco\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\bin\Debug\netstandard2.0\CFDI4.0.dll
+A:\Documentos 2Do Disco\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\bin\Debug\netstandard2.0\CFDI4.0.pdb
+A:\Documentos 2Do Disco\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.csproj.AssemblyReference.cache
+A:\Documentos 2Do Disco\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.GeneratedMSBuildEditorConfig.editorconfig
+A:\Documentos 2Do Disco\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.AssemblyInfoInputs.cache
+A:\Documentos 2Do Disco\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.AssemblyInfo.cs
+A:\Documentos 2Do Disco\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.csproj.CoreCompileInputs.cache
+A:\Documentos 2Do Disco\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.sourcelink.json
+A:\Documentos 2Do Disco\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.dll
+A:\Documentos 2Do Disco\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.pdb
