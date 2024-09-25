@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "lJMmLt4TfNY=",
+  "dgSpecHash": "eOa2MZ/8miDjf36K82It8VOgvwOxE7ash4Jc/7aWviu9oijesA8NJMhWaTZtGInV9gpNoL4QEqKEZpPImgFEkA==",
   "success": true,
-  "projectFilePath": "A:\\Documentos 2Do Disco\\Codigos y lenguajes\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI4.0.csproj",
+  "projectFilePath": "X:\\Documentos DiskTwo\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI4.0.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\AlexCM\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\AlexCM\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\AlexCM\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\AlexCM\\.nuget\\packages\\qrcoder\\1.6.0\\qrcoder.1.6.0.nupkg.sha512",
+    "C:\\Users\\AlexCM\\.nuget\\packages\\system.drawing.common\\5.0.3\\system.drawing.common.5.0.3.nupkg.sha512",
+    "C:\\Users\\AlexCM\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+    "C:\\Users\\AlexCM\\.nuget\\packages\\system.text.encoding.codepages\\5.0.0\\system.text.encoding.codepages.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

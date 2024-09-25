@@ -5,8 +5,8 @@ using System.Text.RegularExpressions;
 
 namespace CFDI4._0
 {
-    public class Moneda
-    {
+    public class NumberToLetters
+    { 
         private String[] UNIDADES = { "", "un ", "dos ", "tres ", "cuatro ", "cinco ", "seis ", "siete ", "ocho ", "nueve " };
         private String[] DECENAS = {"diez ", "once ", "doce ", "trece ", "catorce ", "quince ", "dieciseis ",
         "diecisiete ", "dieciocho ", "diecinueve", "veinte ", "treinta ", "cuarenta ",

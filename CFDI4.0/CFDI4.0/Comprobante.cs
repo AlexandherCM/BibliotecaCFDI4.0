@@ -92,30 +92,29 @@ namespace CFDI4._0
             }
         }
 
-        //PDT REVISAR - - - - - - - - - - - - - 
-        //public string QR
-        //{
-        //    get
-        //    {
-        //        byte[] qr = null;
-        //        string sQR = "";
-        //        string baseQR = "";
+        public string QR
+        {
+            get
+            {
+                // Generar el hash 'fe' a partir del sello (últimos 8 caracteres, Base64)
+                string selloRecortado = Sello.Substring(Sello.Length - 8);  // Extrae los últimos 8 caracteres
+                byte[] selloBytes = System.Text.Encoding.UTF8.GetBytes(selloRecortado);
+                string feHash = Convert.ToBase64String(selloBytes).Replace("=", "");  // Eliminar el relleno '=' si existe
 
-        //        qr = Facturalo.Classes.QR.createBarCode("https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id=" + TimbreFiscalDigital.UUID +
-        //            "&re=" + Emisor.Rfc + "&fe=" + Receptor.Rfc + "&tt=" + Total + "&fe=" + Sello.Substring(Sello.Length - 9, 8));
-        //        baseQR = System.Convert.ToBase64String(qr);
-        //        sQR = System.String.Format("data:image/gif;base64,{0}", baseQR);
+                // Generar la URL del SAT
+                string urlSAT = $"https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?id={TimbreFiscalDigital.UUID}" +
+                                       $"&re={Emisor.Rfc}&rr={Receptor.Rfc}&tt={Total.ToString("F6")}&fe={feHash}";
 
-        //        return sQR;
-        //    }
-        //}
-        //PDT REVISAR - - - - - - - - - - - - - 
+                // Generar el código QR a partir de la URL
+                return Qr.GenerateQRCode(urlSAT);
+            }
+        }
 
         public string MonedaConLetra
         {
             get
             {
-                Moneda oMoneda = new Moneda();
+                NumberToLetters oMoneda = new NumberToLetters();
                 return oMoneda.Convertir(Total.ToString("#.00"), true);
             }
         }
