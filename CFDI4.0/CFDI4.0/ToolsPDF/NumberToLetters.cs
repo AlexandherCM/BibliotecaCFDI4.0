@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace CFDI4._0
+namespace CFDI4._0.ToolsPDF
 {
     public class NumberToLetters
-    { 
-        private String[] UNIDADES = { "", "un ", "dos ", "tres ", "cuatro ", "cinco ", "seis ", "siete ", "ocho ", "nueve " };
-        private String[] DECENAS = {"diez ", "once ", "doce ", "trece ", "catorce ", "quince ", "dieciseis ",
+    {
+        private string[] UNIDADES = { "", "un ", "dos ", "tres ", "cuatro ", "cinco ", "seis ", "siete ", "ocho ", "nueve " };
+        private string[] DECENAS = {"diez ", "once ", "doce ", "trece ", "catorce ", "quince ", "dieciseis ",
         "diecisiete ", "dieciocho ", "diecinueve", "veinte ", "treinta ", "cuarenta ",
         "cincuenta ", "sesenta ", "setenta ", "ochenta ", "noventa "};
-        private String[] CENTENAS = {"", "ciento ", "doscientos ", "trecientos ", "cuatrocientos ", "quinientos ", "seiscientos ",
+        private string[] CENTENAS = {"", "ciento ", "doscientos ", "trecientos ", "cuatrocientos ", "quinientos ", "seiscientos ",
         "setecientos ", "ochocientos ", "novecientos "};
 
         private Regex r;
 
-        public String Convertir(String numero, bool mayusculas, string moneda = "PESOS")
+        public string Convertir(string numero, bool mayusculas, string moneda = "PESOS")
         {
 
-            String literal = "";
-            String parte_decimal;
+            string literal = "";
+            string parte_decimal;
             //si el numero utiliza (.) en lugar de (,) -> se reemplaza
             numero = numero.Replace(".", ",");
 
@@ -35,7 +35,7 @@ namespace CFDI4._0
             if (mc.Count > 0)
             {
                 //se divide el numero 0000000,00 -> entero y decimal
-                String[] Num = numero.Split(',');
+                string[] Num = numero.Split(',');
 
                 string MN = " M.N.";
                 if (moneda != "PESOS")
@@ -75,7 +75,7 @@ namespace CFDI4._0
                 }
                 else
                 {
-                    return (literal + parte_decimal);
+                    return literal + parte_decimal;
                 }
             }
             else
@@ -86,14 +86,14 @@ namespace CFDI4._0
 
         /* funciones para convertir los numeros a literales */
 
-        private String getUnidades(String numero)
+        private string getUnidades(string numero)
         {   // 1 - 9            
             //si tuviera algun 0 antes se lo quita -> 09 = 9 o 009=9
-            String num = numero.Substring(numero.Length - 1);
+            string num = numero.Substring(numero.Length - 1);
             return UNIDADES[int.Parse(num)];
         }
 
-        private String getDecenas(String num)
+        private string getDecenas(string num)
         {// 99                        
             int n = int.Parse(num);
             if (n < 10)
@@ -102,7 +102,7 @@ namespace CFDI4._0
             }
             else if (n > 19)
             {//para 20...99
-                String u = getUnidades(num);
+                string u = getUnidades(num);
                 if (u.Equals(""))
                 { //para 20,30,40,50,60,70,80,90
                     return DECENAS[int.Parse(num.Substring(0, 1)) + 8];
@@ -118,7 +118,7 @@ namespace CFDI4._0
             }
         }
 
-        private String getCentenas(String num)
+        private string getCentenas(string num)
         {// 999 o 099
             if (int.Parse(num) > 99)
             {//es centena
@@ -138,13 +138,13 @@ namespace CFDI4._0
             }
         }
 
-        private String getMiles(String numero)
+        private string getMiles(string numero)
         {// 999 999
             //obtiene las centenas
-            String c = numero.Substring(numero.Length - 3);
+            string c = numero.Substring(numero.Length - 3);
             //obtiene los miles
-            String m = numero.Substring(0, numero.Length - 3);
-            String n = "";
+            string m = numero.Substring(0, numero.Length - 3);
+            string n = "";
             //se comprueba que miles tenga valor entero
             if (int.Parse(m) > 0)
             {
@@ -158,13 +158,13 @@ namespace CFDI4._0
 
         }
 
-        private String getMillones(String numero)
+        private string getMillones(string numero)
         { //000 000 000        
             //se obtiene los miles
-            String miles = numero.Substring(numero.Length - 6);
+            string miles = numero.Substring(numero.Length - 6);
             //se obtiene los millones
-            String millon = numero.Substring(0, numero.Length - 6);
-            String n = "";
+            string millon = numero.Substring(0, numero.Length - 6);
+            string n = "";
             if (millon.Length > 1)
             {
                 n = getCentenas(millon) + "millones ";

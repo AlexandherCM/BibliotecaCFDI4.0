@@ -1,13 +1,13 @@
 ﻿using System.Xml.Serialization;
 
-namespace CFDI4._0
+namespace CFDI4._0.CFDI
 {
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.sat.gob.mx/TimbreFiscalDigital")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.sat.gob.mx/TimbreFiscalDigital", IsNullable = false)]
+    [System.CodeDom.Compiler.GeneratedCode("xsd", "4.8.3928.0")]
+    [System.Serializable()]
+    [System.Diagnostics.DebuggerStepThrough()]
+    [System.ComponentModel.DesignerCategory("code")]
+    [XmlType(AnonymousType = true, Namespace = "http://www.sat.gob.mx/TimbreFiscalDigital")]
+    [XmlRoot(Namespace = "http://www.sat.gob.mx/TimbreFiscalDigital", IsNullable = false)]
     public partial class TimbreFiscalDigital
     {
 
@@ -29,118 +29,118 @@ namespace CFDI4._0
 
         public TimbreFiscalDigital()
         {
-            this.versionField = "1.1";
+            versionField = "1.1";
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [XmlAttribute()]
         public string Version
         {
             get
             {
-                return this.versionField;
+                return versionField;
             }
             set
             {
-                this.versionField = value;
+                versionField = value;
             }
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [XmlAttribute()]
         public string UUID
         {
             get
             {
-                return this.uUIDField;
+                return uUIDField;
             }
             set
             {
-                this.uUIDField = value;
+                uUIDField = value;
             }
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [XmlAttribute()]
         public System.DateTime FechaTimbrado
         {
             get
             {
-                return this.fechaTimbradoField;
+                return fechaTimbradoField;
             }
             set
             {
-                this.fechaTimbradoField = value;
+                fechaTimbradoField = value;
             }
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [XmlAttribute()]
         public string RfcProvCertif
         {
             get
             {
-                return this.rfcProvCertifField;
+                return rfcProvCertifField;
             }
             set
             {
-                this.rfcProvCertifField = value;
+                rfcProvCertifField = value;
             }
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [XmlAttribute()]
         public string Leyenda
         {
             get
             {
-                return this.leyendaField;
+                return leyendaField;
             }
             set
             {
-                this.leyendaField = value;
+                leyendaField = value;
             }
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [XmlAttribute()]
         public string SelloCFD
         {
             get
             {
-                return this.selloCFDField;
+                return selloCFDField;
             }
             set
             {
-                this.selloCFDField = value;
+                selloCFDField = value;
             }
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [XmlAttribute()]
         public string NoCertificadoSAT
         {
             get
             {
-                return this.noCertificadoSATField;
+                return noCertificadoSATField;
             }
             set
             {
-                this.noCertificadoSATField = value;
+                noCertificadoSATField = value;
             }
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [XmlAttribute()]
         public string SelloSAT
         {
             get
             {
-                return this.selloSATField;
+                return selloSATField;
             }
             set
             {
-                this.selloSATField = value;
+                selloSATField = value;
             }
         }
     }
