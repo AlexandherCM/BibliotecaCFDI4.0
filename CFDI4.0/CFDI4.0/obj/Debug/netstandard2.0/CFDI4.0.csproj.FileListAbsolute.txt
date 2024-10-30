@@ -9,3 +9,14 @@ A:\Documentos 2Do Disco\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI
 A:\Documentos 2Do Disco\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.sourcelink.json
 A:\Documentos 2Do Disco\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.dll
 A:\Documentos 2Do Disco\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.pdb
+C:\Users\AlexS\Documentos\ARCH_ALEX\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\bin\Debug\netstandard2.0\CFDI4.0.deps.json
+C:\Users\AlexS\Documentos\ARCH_ALEX\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\bin\Debug\netstandard2.0\CFDI4.0.dll
+C:\Users\AlexS\Documentos\ARCH_ALEX\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\bin\Debug\netstandard2.0\CFDI4.0.pdb
+C:\Users\AlexS\Documentos\ARCH_ALEX\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.csproj.AssemblyReference.cache
+C:\Users\AlexS\Documentos\ARCH_ALEX\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AlexS\Documentos\ARCH_ALEX\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.AssemblyInfoInputs.cache
+C:\Users\AlexS\Documentos\ARCH_ALEX\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.AssemblyInfo.cs
+C:\Users\AlexS\Documentos\ARCH_ALEX\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.csproj.CoreCompileInputs.cache
+C:\Users\AlexS\Documentos\ARCH_ALEX\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.sourcelink.json
+C:\Users\AlexS\Documentos\ARCH_ALEX\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.dll
+C:\Users\AlexS\Documentos\ARCH_ALEX\Codigos y lenguajes\Repos\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.pdb

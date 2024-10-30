@@ -30,6 +30,8 @@ namespace CFDI4._0
 
         private ComprobanteAddenda addendaField;
 
+        public TimbreFiscalDigital TimbreFiscalDigital;
+
         private string versionField;
 
         private string serieField;
@@ -75,8 +77,6 @@ namespace CFDI4._0
         private string lugarExpedicionField;
 
         private string confirmacionField;
-
-        public TimbreFiscalDigital TimbreFiscalDigital;
 
         [XmlIgnore]
         public string CadenaOriginal;
