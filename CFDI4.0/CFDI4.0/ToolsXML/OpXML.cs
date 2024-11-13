@@ -6,24 +6,31 @@ using System.IO;
 using System.Xml.Xsl;
 using System.Reflection;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CFDI4._0.ToolsXML
 {
     public class OpXML
-    {  
+    {
         private readonly string _RutaCerCSD;
-        private readonly string _RutaKeyCSD; 
+        private readonly string _RutaKeyCSD;
         private readonly string _ClavePrivada;
         private readonly string _CadenaOriginalXSLT;
 
-        private string XML; 
+        private string XML;
 
         public OpXML(string RutaCerCSD, string RutaKeyCSD, string ClavePrivada)
         {
-            _RutaCerCSD   = RutaCerCSD;
-            _RutaKeyCSD   = RutaKeyCSD;
+            _RutaCerCSD = RutaCerCSD;
+            _RutaKeyCSD = RutaKeyCSD;
             _ClavePrivada = ClavePrivada;
 
+            _CadenaOriginalXSLT = "CFDI4._0.Archivos.cadenaoriginal_4_0.xslt";
+        }
+        
+        public OpXML()
+        {
             _CadenaOriginalXSLT = "CFDI4._0.Archivos.cadenaoriginal_4_0.xslt";
         }
 
@@ -42,7 +49,7 @@ namespace CFDI4._0.ToolsXML
             }
         }
 
-        public string CrearXmlSellado(Comprobante objComprobante)   
+        public string CrearXmlSellado(Comprobante objComprobante)
         {
             //GENERAR NÚMERO DE CERTIFICADO - - - - - - - - - - - - - - - - - - - - - - - - 
             string numeroCertificado, aa, b, c;
@@ -73,9 +80,109 @@ namespace CFDI4._0.ToolsXML
             return Convert.ToBase64String(xmlBytes);
         }
 
+        public string ConvertBase64ToXml(string base64Content)
+        {
+            if (string.IsNullOrEmpty(base64Content))
+                throw new ArgumentException("El contenido en Base64 no puede estar vacío.");
+
+            // Convertir de Base64 a bytes
+            byte[] xmlBytes = Convert.FromBase64String(base64Content);
+
+            // Convertir los bytes a una cadena usando UTF-8
+            return Encoding.UTF8.GetString(xmlBytes);
+        }
+
+
+        public Comprobante DeserializarXMLCompleto(string xmlContent)
+        {
+            // Crear el serializador para el objeto Comprobante
+            XmlSerializer serializer = new XmlSerializer(typeof(Comprobante), "http://www.sat.gob.mx/cfd/4");
+
+            // Deserializar el XML contenido en la cadena
+            Comprobante oComprobante;
+            using (StringReader stringReader = new StringReader(xmlContent))
+            {
+                oComprobante = (Comprobante)serializer.Deserialize(stringReader);
+            }
+
+            if (oComprobante.Complemento != null)
+            {
+                //Procesar los complementos en el objeto Comprobante
+                foreach (var oComplemento in oComprobante.Complemento.Any)
+                {
+                    if (!oComplemento.Name.Contains("TimbreFiscalDigital"))
+                        continue;
+
+                    // Crear el serializador para el complemento TimbreFiscalDigital
+                    XmlSerializer serializerComplemento = new XmlSerializer(typeof(TimbreFiscalDigital));
+
+                    // Deserializar el complemento usando el OuterXml
+                    using (var readerComplemento = new StringReader(oComplemento.OuterXml))
+                    {
+                        oComprobante.TimbreFiscalDigital =
+                            (TimbreFiscalDigital)serializerComplemento.Deserialize(readerComplemento);
+                    }
+                }
+            }
+
+            return oComprobante;
+        }
+
+        public TimbreFiscalDigital DeserializarTimbreFiscal(string xmlContent)
+        {
+            // Cargar el documento XML
+            XmlDocument document = new XmlDocument();
+            document.LoadXml(xmlContent);
+
+            // Seleccionar el nodo TimbreFiscalDigital
+            XmlNamespaceManager nsmgr = new XmlNamespaceManager(document.NameTable);
+            nsmgr.AddNamespace("tfd", "http://www.sat.gob.mx/TimbreFiscalDigital");
+
+            XmlNode timbreNode = document.SelectSingleNode("//tfd:TimbreFiscalDigital", nsmgr);
+
+            if (timbreNode == null)
+            {
+                throw new InvalidOperationException("No se encontró el nodo TimbreFiscalDigital en la respuesta SOAP.");
+            }
+
+            // Deserializar el nodo
+            XmlSerializer serializer = new XmlSerializer(typeof(TimbreFiscalDigital));
+            using (StringReader reader = new StringReader(timbreNode.OuterXml))
+            {
+                return (TimbreFiscalDigital)serializer.Deserialize(reader);
+            }
+        }
+
+        public Comprobante AgregarTimbreFiscalAComplemento(Comprobante comprobante, TimbreFiscalDigital timbreFiscal)
+        {
+            // Crear un elemento XML para TimbreFiscalDigital
+            XmlDocument doc = new XmlDocument();
+            XmlElement timbreElement = doc.CreateElement("tfd", "TimbreFiscalDigital", "http://www.sat.gob.mx/TimbreFiscalDigital");
+
+            timbreElement.SetAttribute("Version", timbreFiscal.Version);
+            timbreElement.SetAttribute("UUID", timbreFiscal.UUID);
+            timbreElement.SetAttribute("FechaTimbrado", timbreFiscal.FechaTimbrado.ToString("yyyy-MM-ddTHH:mm:ss"));
+            timbreElement.SetAttribute("RfcProvCertif", timbreFiscal.RfcProvCertif);
+            timbreElement.SetAttribute("SelloCFD", timbreFiscal.SelloCFD);
+            timbreElement.SetAttribute("NoCertificadoSAT", timbreFiscal.NoCertificadoSAT);
+            timbreElement.SetAttribute("SelloSAT", timbreFiscal.SelloSAT);
+
+            // Verificar si el Complemento está inicializado
+            if (comprobante.Complemento == null)
+            {
+                comprobante.Complemento = new ComprobanteComplemento();
+            }
+
+            // Convertir el arreglo Any a una lista temporal, agregar el timbre y volver a asignarlo como arreglo
+            var elementos = comprobante.Complemento.Any?.ToList() ?? new List<XmlElement>();
+            elementos.Add(timbreElement);
+            comprobante.Complemento.Any = elementos.ToArray();
+
+            return comprobante;
+        }
 
         // FUNCIÓN QUE CREA Y RETORNA EL XML - - - - - - - - - - - - - - - - - - - - - - - - 
-        private string CrearXml(Comprobante objComprobante)          
+        public string CrearXml(Comprobante objComprobante)
         {
             XmlSerializerNamespaces xmlNamespaces = new XmlSerializerNamespaces();
 
@@ -142,9 +249,9 @@ namespace CFDI4._0.ToolsXML
             return cadenaOriginal;
         }
 
-        
 
-        
+
+
 
     }
 }

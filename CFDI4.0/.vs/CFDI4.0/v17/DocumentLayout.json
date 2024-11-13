@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|c:\\users\\alexs\\documentos\\arch_alex\\codigos y lenguajes\\repos\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\toolsxml\\opxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|solutionrelative:cfdi4.0\\toolsxml\\opxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|c:\\users\\alexs\\documentos\\arch_alex\\codigos y lenguajes\\repos\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\toolsxml\\httpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|solutionrelative:cfdi4.0\\toolsxml\\httpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HttpService.cs",
+              "DocumentMoniker": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\HttpService.cs",
+              "RelativeDocumentMoniker": "CFDI4.0\\ToolsXML\\HttpService.cs",
+              "ToolTip": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\HttpService.cs",
+              "RelativeToolTip": "CFDI4.0\\ToolsXML\\HttpService.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAowCcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-13T08:29:47.209Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,7 +41,7 @@
               "RelativeDocumentMoniker": "CFDI4.0\\ToolsXML\\OpXML.cs",
               "ToolTip": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\OpXML.cs",
               "RelativeToolTip": "CFDI4.0\\ToolsXML\\OpXML.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAswCsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABIAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-13T04:32:29.022Z",
               "EditorCaption": ""
