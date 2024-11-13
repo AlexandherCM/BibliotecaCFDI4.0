@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|c:\\users\\alexs\\documentos\\arch_alex\\codigos y lenguajes\\repos\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\toolsxml\\opcfdi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|solutionrelative:cfdi4.0\\toolsxml\\opcfdi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|c:\\users\\alexs\\documentos\\arch_alex\\codigos y lenguajes\\repos\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\toolsxml\\opxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|solutionrelative:cfdi4.0\\toolsxml\\opxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|c:\\users\\alexs\\documentos\\arch_alex\\codigos y lenguajes\\repos\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\cfdi\\comprobante.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|solutionrelative:cfdi4.0\\cfdi\\comprobante.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|c:\\users\\alexs\\documentos\\arch_alex\\codigos y lenguajes\\repos\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\toolsxml\\httpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -18,32 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "HttpService.cs",
               "DocumentMoniker": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\HttpService.cs",
               "RelativeDocumentMoniker": "CFDI4.0\\ToolsXML\\HttpService.cs",
               "ToolTip": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\HttpService.cs",
               "RelativeToolTip": "CFDI4.0\\ToolsXML\\HttpService.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAowCcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAwwBEAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-13T08:29:47.209Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Comprobante.cs",
+              "DocumentMoniker": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI\\Comprobante.cs",
+              "RelativeDocumentMoniker": "CFDI4.0\\CFDI\\Comprobante.cs",
+              "ToolTip": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI\\Comprobante.cs",
+              "RelativeToolTip": "CFDI4.0\\CFDI\\Comprobante.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAQwFEAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-13T19:30:25.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "OpCFDI.cs",
+              "DocumentMoniker": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\OpCFDI.cs",
+              "RelativeDocumentMoniker": "CFDI4.0\\ToolsXML\\OpCFDI.cs",
+              "ToolTip": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\OpCFDI.cs",
+              "RelativeToolTip": "CFDI4.0\\ToolsXML\\OpCFDI.cs",
+              "ViewState": "AgIAAOIAAAAAAAAAAAAQwAMBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-13T04:32:29.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "OpXML.cs",
               "DocumentMoniker": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\OpXML.cs",
               "RelativeDocumentMoniker": "CFDI4.0\\ToolsXML\\OpXML.cs",
               "ToolTip": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\OpXML.cs",
               "RelativeToolTip": "CFDI4.0\\ToolsXML\\OpXML.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABIAAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-13T04:32:29.022Z",
+              "WhenOpened": "2024-11-13T19:08:57.329Z",
               "EditorCaption": ""
             }
           ]

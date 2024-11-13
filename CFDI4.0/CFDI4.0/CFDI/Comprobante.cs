@@ -14,7 +14,6 @@ namespace CFDI4._0.CFDI
     [XmlRoot(Namespace = "http://www.sat.gob.mx/cfd/4", IsNullable = false)]
     public partial class Comprobante
     {
-
         private ComprobanteInformacionGlobal informacionGlobalField;
 
         private ComprobanteCfdiRelacionados[] cfdiRelacionadosField;
@@ -81,17 +80,6 @@ namespace CFDI4._0.CFDI
 
         [XmlIgnore]
         public string CadenaOriginal;
-
-        //public string PathLogo
-        //{
-        //    get
-        //    {
-        //        string BasePath = AppDomain.CurrentDomain.BaseDirectory;
-        //        string document = "Plantillas/CAMM-LOGO.png";
-
-        //        return Path.Combine(BasePath, document);
-        //    }
-        //}
 
         public string QR
         {
