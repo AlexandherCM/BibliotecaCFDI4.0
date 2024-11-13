@@ -55,6 +55,9 @@ namespace CFDI4._0.ToolsXML
                 endPoint = withDomUrl ? $"{_url}/{endPoint}" : endPoint;
                 HttpResponseMessage response = await httpClient.PostAsync(endPoint, httpContent);
 
+                if (response.IsSuccessStatusCode)
+                    return await response.Content.ReadAsStringAsync();
+
                 return null;
             }
         }
@@ -73,6 +76,9 @@ namespace CFDI4._0.ToolsXML
 
                 endPoint = withDomUrl ? $"{_url}/{endPoint}" : endPoint;
                 HttpResponseMessage response = await httpClient.PutAsync(endPoint, httpContent);
+
+                if (response.IsSuccessStatusCode)
+                    return await response.Content.ReadAsStringAsync();
 
                 return null;
             }
