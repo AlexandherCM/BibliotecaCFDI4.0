@@ -1,44 +1,10 @@
-﻿//**********************************************************************************
-//
-//OpenSSLKey
-// .NET 2.0  OpenSSL Public & Private Key Parser
-//
-// Copyright (C) 2008  	JavaScience Consulting
-//
-//***********************************************************************************
-//
-//  opensslkey.cs
-//
-//  Reads and parses:
-//    (1) OpenSSL PEM or DER public keys
-//    (2) OpenSSL PEM or DER traditional SSLeay private keys (encrypted and unencrypted)
-//    (3) PKCS #8 PEM or DER encoded private keys (encrypted and unencrypted)
-//  Keys in PEM format must have headers/footers .
-//  Encrypted Private Key in SSLEay format not supported in DER
-//  Removes header/footer lines.
-//  For traditional SSLEAY PEM private keys, checks for encrypted format and
-//  uses PBE to extract 3DES key.
-//  For SSLEAY format, only supports encryption format: DES-EDE3-CBC
-//  For PKCS #8, only supports PKCS#5 v2.0  3des.
-//  Parses private and public key components and returns .NET RSA object.
-//  Creates dummy unsigned certificate linked to private keypair and
-//  optionally exports to pkcs #12
-//
-// See also: 
-//  http://www.openssl.org/docs/crypto/pem.html#PEM_ENCRYPTION_FORMAT 
-//**************************************************************************************
-
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
 using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 using System.Runtime.InteropServices;
 using System.Security;
-using System.Security.Permissions;
-using System.Diagnostics;
 using System.ComponentModel;
-
 
 namespace CFDI4._0.ToolsXML
 {
@@ -98,6 +64,8 @@ namespace CFDI4._0.ToolsXML
 
 
 
+
+
     public class opensslkey
     {
 
@@ -110,240 +78,9 @@ namespace CFDI4._0.ToolsXML
         const String pemp8encheader = "-----BEGIN ENCRYPTED PRIVATE KEY-----";
         const String pemp8encfooter = "-----END ENCRYPTED PRIVATE KEY-----";
 
-        // static byte[] pempublickey;
-        // static byte[] pemprivatekey;
-        // static byte[] pkcs8privatekey;
-        // static byte[] pkcs8encprivatekey;
 
         static bool verbose = false;
-        /*
-         public static void Main(String[] args) {
-
-          if(args.Length == 1)
-            if(args[0].ToUpper() == "V")
-                verbose = true;
-
-          Console.ForegroundColor = ConsoleColor.Gray;
-          Console.Write("\nRSA public, private or PKCS #8  key file to decode: ");
-          String filename = Console.ReadLine().Trim();
-          if (filename == "")  //exit while(true) loop
-            return;
-              if (!File.Exists(filename)) {
-                 Console.WriteLine("File \"{0}\" does not exist!\n", filename);
-                 return;	
-              }
-
-            StreamReader sr = File.OpenText(filename);
-            String pemstr = sr.ReadToEnd().Trim();
-            sr.Close();
-            if(pemstr.StartsWith("-----BEGIN"))
-                DecodePEMKey(pemstr);
-            else
-                DecodeDERKey(filename);
-          }
-
-
-            */
-
-
-        // ------- Decode PEM pubic, private or pkcs8 key ----------------
-        /*public static void DecodePEMKey(String pemstr)
-         {
-            byte[] pempublickey;
-            byte[] pemprivatekey;
-            byte[] pkcs8privatekey;
-            byte[] pkcs8encprivatekey;
-
-            if(pemstr.StartsWith(pempubheader) && pemstr.EndsWith(pempubfooter))
-            {
-                Console.WriteLine("Trying to decode and parse a PEM public key ..");
-                pempublickey = DecodeOpenSSLPublicKey(pemstr);
-                if(pempublickey != null)
-                {
-                    if(verbose)
-                      showBytes("\nRSA public key", pempublickey) ;
-                    //PutFileBytes("rsapubkey.pem", pempublickey, pempublickey.Length) ;
-                    RSACryptoServiceProvider rsa =  DecodeX509PublicKey(pempublickey);
-                    Console.WriteLine("\nCreated an RSACryptoServiceProvider instance\n") ;
-                    String xmlpublickey =rsa.ToXmlString(false) ;
-                    Console.WriteLine("\nXML RSA public key:  {0} bits\n{1}\n", rsa.KeySize, xmlpublickey) ;
-                }		
-            }
-
-
-
-
-            else if(pemstr.StartsWith(pemprivheader) && pemstr.EndsWith(pemprivfooter))
-            {
-                Console.WriteLine("Trying to decrypt and parse a PEM private key ..");
-                pemprivatekey = DecodeOpenSSLPrivateKey(pemstr);
-                if(pemprivatekey != null)
-                {
-                    if(verbose)
-                      showBytes("\nRSA private key", pemprivatekey) ;
-                    //PutFileBytes("rsaprivkey.pem", pemprivatekey, pemprivatekey.Length) ;
-                    RSACryptoServiceProvider rsa =  DecodeRSAPrivateKey(pemprivatekey);
-                    Console.WriteLine("\nCreated an RSACryptoServiceProvider instance\n") ;
-                    String xmlprivatekey =rsa.ToXmlString(true) ;
-                    Console.WriteLine("\nXML RSA private key:  {0} bits\n{1}\n", rsa.KeySize, xmlprivatekey) ;
-                    ProcessRSA(rsa);
-                }
-            }
-
-
-
-            else if(pemstr.StartsWith(pemp8header) && pemstr.EndsWith(pemp8footer))
-            {
-                Console.WriteLine("Trying to decode and parse as PEM PKCS #8 PrivateKeyInfo ..");
-                pkcs8privatekey = DecodePkcs8PrivateKey(pemstr);
-                if(pkcs8privatekey != null)
-                {
-                    if(verbose)
-                      showBytes("\nPKCS #8 PrivateKeyInfo", pkcs8privatekey) ;
-                    //PutFileBytes("PrivateKeyInfo", pkcs8privatekey, pkcs8privatekey.Length) ;
-                    RSACryptoServiceProvider rsa =  DecodePrivateKeyInfo(pkcs8privatekey);
-                    if(rsa !=null) 
-                    {
-                     Console.WriteLine("\nCreated an RSACryptoServiceProvider instance\n") ;
-                     String xmlprivatekey =rsa.ToXmlString(true) ;
-                     Console.WriteLine("\nXML RSA private key:  {0} bits\n{1}\n", rsa.KeySize, xmlprivatekey) ;
-                     ProcessRSA(rsa) ; 
-                    }
-                    else
-                    Console.WriteLine("\nFailed to create an RSACryptoServiceProvider");
-                }		
-            }
-
-
-            else if(pemstr.StartsWith(pemp8encheader) && pemstr.EndsWith(pemp8encfooter))
-            {
-                Console.WriteLine("Trying to decode and parse as PEM PKCS #8 EncryptedPrivateKeyInfo ..");
-                pkcs8encprivatekey = DecodePkcs8EncPrivateKey(pemstr);
-                if(pkcs8encprivatekey != null)
-                {
-                    if(verbose)
-                      showBytes("\nPKCS #8 EncryptedPrivateKeyInfo", pkcs8encprivatekey) ;
-                    //PutFileBytes("EncryptedPrivateKeyInfo", pkcs8encprivatekey, pkcs8encprivatekey.Length) ;
-                    RSACryptoServiceProvider rsa =  DecodeEncryptedPrivateKeyInfo(pkcs8encprivatekey);
-                    if(rsa !=null) 
-                    {
-                     Console.WriteLine("\nCreated an RSACryptoServiceProvider instance\n") ;
-                     String xmlprivatekey =rsa.ToXmlString(true) ;
-                     Console.WriteLine("\nXML RSA private key:  {0} bits\n{1}\n", rsa.KeySize, xmlprivatekey) ;
-                      ProcessRSA(rsa) ;
-                    }
-                    else
-                    Console.WriteLine("\nFailed to create an RSACryptoServiceProvider");
-                }		
-            }
-
-
-            else
-            {
-                Console.WriteLine("Not a PEM public, private key or a PKCS #8");
-                return;
-            }
-        }*/
-
-
-
-
-
-        // ------- Decode PEM pubic, private or pkcs8 key ----------------
-        /*public static void DecodeDERKey(String filename)
-         {
-            RSACryptoServiceProvider rsa = null ;
-            byte[] keyblob = GetFileBytes(filename);
-            if(keyblob == null)
-                return;
-
-                rsa =  DecodeX509PublicKey(keyblob);
-                if(rsa !=null)
-                {
-                 Console.WriteLine("\nA valid SubjectPublicKeyInfo\n") ;
-                 Console.WriteLine("\nCreated an RSACryptoServiceProvider instance\n") ;
-                 String xmlpublickey =rsa.ToXmlString(false) ;
-                 Console.WriteLine("\nXML RSA public key:  {0} bits\n{1}\n", rsa.KeySize, xmlpublickey) ;
-                 return;
-                }		
-
-                rsa =  DecodeRSAPrivateKey(keyblob);
-                if(rsa != null)
-                {
-                Console.WriteLine("\nA valid RSAPrivateKey\n") ;
-                Console.WriteLine("\nCreated an RSACryptoServiceProvider instance\n") ;
-                String xmlprivatekey =rsa.ToXmlString(true) ;
-                Console.WriteLine("\nXML RSA private key:  {0} bits\n{1}\n", rsa.KeySize, xmlprivatekey) ;
-                 ProcessRSA(rsa) ;
-                return;
-                }
-
-                rsa =  DecodePrivateKeyInfo(keyblob);	//PKCS #8 unencrypted
-                if(rsa !=null) 
-                {
-                 Console.WriteLine("\nA valid PKCS #8 PrivateKeyInfo\n") ;
-                 Console.WriteLine("\nCreated an RSACryptoServiceProvider instance\n") ;
-                 String xmlprivatekey =rsa.ToXmlString(true) ;
-                 Console.WriteLine("\nXML RSA private key:  {0} bits\n{1}\n", rsa.KeySize, xmlprivatekey) ;
-                 ProcessRSA(rsa);
-                return;
-                }
-
-                rsa =  DecodeEncryptedPrivateKeyInfo(keyblob);	//PKCS #8 encrypted
-                if(rsa !=null) {
-                 Console.WriteLine("\nA valid PKCS #8 EncryptedPrivateKeyInfo\n") ;
-                 Console.WriteLine("\nCreated an RSACryptoServiceProvider instance\n") ;
-                 String xmlprivatekey =rsa.ToXmlString(true) ;
-                 Console.WriteLine("\nXML RSA private key:  {0} bits\n{1}\n", rsa.KeySize, xmlprivatekey) ;
-                 ProcessRSA(rsa);
-                return;
-                }
-            Console.WriteLine("Not a binary DER public, private or PKCS #8 key");
-            return;
-        }*/
-
-
-
-
-
-        public static void ProcessRSA(RSACryptoServiceProvider rsa)
-        {
-            if (verbose)
-                showRSAProps(rsa);
-            Console.Write("\n\nExport RSA private key to PKCS #12 file?  (Y or N) ");
-            String resp = Console.ReadLine().ToUpper();
-            if (resp == "Y" || resp == "YES")
-                RSAtoPKCS12(rsa);
-        }
-
-
-
-
-        //--------  Generate pkcs #12 from an RSACryptoServiceProvider  ---------
-        public static void RSAtoPKCS12(RSACryptoServiceProvider rsa)
-        {
-            CspKeyContainerInfo keyInfo = rsa.CspKeyContainerInfo;
-            String keycontainer = keyInfo.KeyContainerName;
-            uint keyspec = (uint)keyInfo.KeyNumber;
-            String provider = keyInfo.ProviderName;
-            uint cspflags = 0;  //CryptoAPI Current User store;   LM would be CRYPT_MACHINE_KEYSET	= 0x00000020
-            String fname = keycontainer + ".p12";
-            //---- need to pass in rsa since underlying keycontainer is not persisted and might be deleted too quickly ---
-            byte[] pkcs12 = GetPkcs12(rsa, keycontainer, provider, keyspec, cspflags);
-            if ((pkcs12 != null) && verbose)
-                showBytes("\npkcs #12", pkcs12);
-            if (pkcs12 != null)
-            {
-                PutFileBytes(fname, pkcs12, pkcs12.Length);
-                Console.WriteLine("\nWrote pkc #12 file '{0}'\n", fname);
-            }
-            else
-                Console.WriteLine("\nProblem getting pkcs#12");
-        }
-
-
-
-
+        
         //--------   Get the binary PKCS #8 PRIVATE key   --------
         public static byte[] DecodePkcs8PrivateKey(String instr)
         {
@@ -369,6 +106,9 @@ namespace CFDI4._0.ToolsXML
             }
             return binkey;
         }
+
+
+
 
 
         //------- Parses binary asn.1 PKCS #8 PrivateKeyInfo; returns RSACryptoServiceProvider ---
@@ -440,9 +180,6 @@ namespace CFDI4._0.ToolsXML
 
 
 
-
-
-
         //--------   Get the binary PKCS #8 Encrypted PRIVATE key   --------
         public static byte[] DecodePkcs8EncPrivateKey(String instr)
         {
@@ -468,7 +205,6 @@ namespace CFDI4._0.ToolsXML
             }
             return binkey;
         }
-
 
 
 
@@ -666,11 +402,6 @@ namespace CFDI4._0.ToolsXML
 
 
 
-
-
-
-
-
         //--------   Get the binary RSA PUBLIC key   --------
         public static byte[] DecodeOpenSSLPublicKey(String instr)
         {
@@ -696,6 +427,8 @@ namespace CFDI4._0.ToolsXML
             }
             return binkey;
         }
+
+
 
 
 
@@ -801,6 +534,8 @@ namespace CFDI4._0.ToolsXML
 
 
 
+
+
         //------- Parses binary ans.1 RSA private key; returns RSACryptoServiceProvider  ---
         public static RSACryptoServiceProvider DecodeRSAPrivateKey(byte[] privkey)
         {
@@ -891,6 +626,8 @@ namespace CFDI4._0.ToolsXML
 
 
 
+
+
         private static int GetIntegerSize(BinaryReader binr)
         {
             byte bt = 0;
@@ -926,6 +663,7 @@ namespace CFDI4._0.ToolsXML
             binr.BaseStream.Seek(-1, SeekOrigin.Current);       //last ReadByte wasn't a removed zero, so back up a byte
             return count;
         }
+
 
 
 
@@ -1007,6 +745,7 @@ namespace CFDI4._0.ToolsXML
 
 
 
+
         // ----- Decrypt the 3DES encrypted RSA private key ----------
 
         public static byte[] DecryptKey(byte[] cipherData, byte[] desKey, byte[] IV)
@@ -1029,6 +768,7 @@ namespace CFDI4._0.ToolsXML
             byte[] decryptedData = memst.ToArray();
             return decryptedData;
         }
+
 
 
 
@@ -1094,44 +834,6 @@ namespace CFDI4._0.ToolsXML
 
 
 
-
-        //------   Since we are using an RSA with nonpersisted keycontainer, must pass it in to ensure it isn't colledted  -----
-        private static byte[] GetPkcs12(RSA rsa, String keycontainer, String cspprovider, uint KEYSPEC, uint cspflags)
-        {
-            byte[] pfxblob = null;
-            IntPtr hCertCntxt = IntPtr.Zero;
-
-            String DN = "CN=Opensslkey Unsigned Certificate";
-
-            hCertCntxt = CreateUnsignedCertCntxt(keycontainer, cspprovider, KEYSPEC, cspflags, DN);
-            if (hCertCntxt == IntPtr.Zero)
-            {
-                Console.WriteLine("Couldn't create an unsigned-cert\n");
-                return null;
-            }
-            try
-            {
-                X509Certificate cert = new X509Certificate(hCertCntxt); //create certificate object from cert context.
-                X509Certificate2UI.DisplayCertificate(new X509Certificate2(cert));  // display it, showing linked private key
-                SecureString pswd = GetSecPswd("Set PFX Password ==>");
-                pfxblob = cert.Export(X509ContentType.Pkcs12, pswd);
-            }
-
-            catch (Exception exc)
-            {
-                Console.WriteLine("BAD RESULT" + exc.Message);
-                pfxblob = null;
-            }
-
-            rsa.Clear();
-            if (hCertCntxt != IntPtr.Zero)
-                Win32.CertFreeCertificateContext(hCertCntxt);
-            return pfxblob;
-        }
-
-
-
-
         private static IntPtr CreateUnsignedCertCntxt(String keycontainer, String provider, uint KEYSPEC, uint cspflags, String DN)
         {
             const uint AT_KEYEXCHANGE = 0x00000001;
@@ -1186,6 +888,7 @@ namespace CFDI4._0.ToolsXML
             Marshal.FreeHGlobal(subjectblob.pbData);
             return hCertCntxt;
         }
+
 
 
 
@@ -1263,6 +966,8 @@ namespace CFDI4._0.ToolsXML
 
 
 
+
+
         private static void showRSAProps(RSACryptoServiceProvider rsa)
         {
             Console.WriteLine("RSA CSP key information:");
@@ -1280,9 +985,6 @@ namespace CFDI4._0.ToolsXML
             Console.WriteLine("Removable property: " + keyInfo.Removable);
             Console.WriteLine("UniqueKeyContainerName property: " + keyInfo.UniqueKeyContainerName);
         }
-
-
-
         private static void showBytes(String info, byte[] data)
         {
             Console.WriteLine("{0}  [{1} bytes]", info, data.Length);
@@ -1294,6 +996,9 @@ namespace CFDI4._0.ToolsXML
             }
             Console.WriteLine("\n\n");
         }
+
+
+
 
 
         private static byte[] GetFileBytes(String filename)
@@ -1308,6 +1013,9 @@ namespace CFDI4._0.ToolsXML
             stream.Close();
             return filebytes;
         }
+
+
+
 
 
         private static void PutFileBytes(String outfile, byte[] data, int bytes)
@@ -1335,6 +1043,8 @@ namespace CFDI4._0.ToolsXML
 
 
 
+
+
         private static void showWin32Error(int errorcode)
         {
             Win32Exception myEx = new Win32Exception(errorcode);
@@ -1343,7 +1053,6 @@ namespace CFDI4._0.ToolsXML
             Console.WriteLine("Error message:\t {0}\n", myEx.Message);
             Console.ForegroundColor = ConsoleColor.Gray;
         }
-
 
     }
 }

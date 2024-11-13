@@ -6,6 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Archivos\cadenaoriginal_4_0.xslt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Archivos\cadenaoriginal_4_0.xslt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="QRCoder" Version="1.6.0" />
   </ItemGroup>
 
