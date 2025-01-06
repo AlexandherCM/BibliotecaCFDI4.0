@@ -23,7 +23,8 @@ namespace CFDI4._0.ToolsPDF
                 ms.Write(bitMap, 0, bitMap.Length);
                 byte[] byteImage = ms.ToArray();
                 string base64 = Convert.ToBase64String(byteImage);
-                return $"data:image/png;base64,{base64}";
+                //return $"data:image/png;base64,{base64}";
+                return base64;
             }
         }
 

@@ -125,7 +125,7 @@ namespace CFDI4._0.ToolsXML
 
 
         // FUNCIÓN QUE CREA Y RETORNA EL XML SELLADO POR MEDIO DE UN OBJ DE TIPO Comprobante - - - - - - - - - - - - - - - - - - - - - - - - 
-        public string CrearXmlSellado(Comprobante objComprobante)
+        public (string, string) CrearXmlSellado(Comprobante objComprobante)
         {
             //GENERAR NÚMERO DE CERTIFICADO - - - - - - - - - - - - - - - - - - - - - - - - 
             string numeroCertificado, aa, b, c;
@@ -139,11 +139,11 @@ namespace CFDI4._0.ToolsXML
             //EN ESTE PASO SE SELLA LA PREFACTURA
             SelloDigital oSelloDigital = new SelloDigital();
 
-            objComprobante.CadenaOriginal = cadenaOriginal; //SE ANEXA LA CADENA ORIGINAL PARA AGREGAR AL PDF ¡ANALIZAR!
+            //objComprobante.CadenaOriginal = cadenaOriginal; //SE ANEXA LA CADENA ORIGINAL PARA AGREGAR AL PDF ¡ANALIZAR!
             objComprobante.Certificado = oSelloDigital.Certificado(_RutaCerCSD);
             objComprobante.Sello = oSelloDigital.Sellar(cadenaOriginal, _RutaKeyCSD, _ClavePrivada);
 
-            return ConvertirXML(objComprobante); //EL XML YA INCLUYE LA CADENAORIGINAL PERO EL XML LO IGNORA
+            return (ConvertirXML(objComprobante), cadenaOriginal); //EL XML YA INCLUYE LA CADENAORIGINAL PERO EL XML LO IGNORA
         }
 
         //CONVERSIÓN DE TODO EL XML A OBJETO DE C#
