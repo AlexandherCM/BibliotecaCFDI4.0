@@ -18,6 +18,7 @@ namespace CFDI4._0.ToolsXML
         public HttpService(string url = "")
         {
             withDomUrl = !string.IsNullOrEmpty(url);
+            if (withDomUrl) _url = url;
 
             //true : Se conatena el prefijo a los end-points
             //false: Se define el end-point completo en las funciones http
