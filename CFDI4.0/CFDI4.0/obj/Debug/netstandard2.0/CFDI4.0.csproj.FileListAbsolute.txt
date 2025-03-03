@@ -31,3 +31,14 @@ C:\Users\AlexS\Documentos\ARCH_ALEX\Codigos y lenguajes\Repos\IMOVS\TemaFacturac
 C:\Users\AlexS\Documentos\ARCH_ALEX\Codigos y lenguajes\Repos\IMOVS\TemaFacturacion\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.sourcelink.json
 C:\Users\AlexS\Documentos\ARCH_ALEX\Codigos y lenguajes\Repos\IMOVS\TemaFacturacion\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.dll
 C:\Users\AlexS\Documentos\ARCH_ALEX\Codigos y lenguajes\Repos\IMOVS\TemaFacturacion\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.pdb
+C:\Users\Desarrollo.05\Documents\ALX\Códigos y lenguajes\Repos\TEMA FACTURACIÓN\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\bin\Debug\netstandard2.0\CFDI4.0.deps.json
+C:\Users\Desarrollo.05\Documents\ALX\Códigos y lenguajes\Repos\TEMA FACTURACIÓN\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\bin\Debug\netstandard2.0\CFDI4.0.dll
+C:\Users\Desarrollo.05\Documents\ALX\Códigos y lenguajes\Repos\TEMA FACTURACIÓN\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\bin\Debug\netstandard2.0\CFDI4.0.pdb
+C:\Users\Desarrollo.05\Documents\ALX\Códigos y lenguajes\Repos\TEMA FACTURACIÓN\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.csproj.AssemblyReference.cache
+C:\Users\Desarrollo.05\Documents\ALX\Códigos y lenguajes\Repos\TEMA FACTURACIÓN\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Desarrollo.05\Documents\ALX\Códigos y lenguajes\Repos\TEMA FACTURACIÓN\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.AssemblyInfoInputs.cache
+C:\Users\Desarrollo.05\Documents\ALX\Códigos y lenguajes\Repos\TEMA FACTURACIÓN\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.AssemblyInfo.cs
+C:\Users\Desarrollo.05\Documents\ALX\Códigos y lenguajes\Repos\TEMA FACTURACIÓN\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.csproj.CoreCompileInputs.cache
+C:\Users\Desarrollo.05\Documents\ALX\Códigos y lenguajes\Repos\TEMA FACTURACIÓN\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.sourcelink.json
+C:\Users\Desarrollo.05\Documents\ALX\Códigos y lenguajes\Repos\TEMA FACTURACIÓN\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.dll
+C:\Users\Desarrollo.05\Documents\ALX\Códigos y lenguajes\Repos\TEMA FACTURACIÓN\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\obj\Debug\netstandard2.0\CFDI4.0.pdb
