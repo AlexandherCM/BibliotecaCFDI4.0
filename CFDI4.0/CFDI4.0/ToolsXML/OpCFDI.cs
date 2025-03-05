@@ -21,10 +21,7 @@ namespace CFDI4._0.ToolsXML
         // CONTRUCTOR PARA CREAR EL OBJ Comprobante --> Lado del cliente
         public OpCFDI(string RutaCerCSD, string RutaKeyCSD, string ClavePrivada)
         {
-            _RutaCerCSD = RutaCerCSD;
-            _RutaKeyCSD = RutaKeyCSD;
-            _ClavePrivada = ClavePrivada;
-
+            _RutaCerCSD = RutaCerCSD; _RutaKeyCSD = RutaKeyCSD; _ClavePrivada = ClavePrivada;
             _CadenaOriginalXSLT = "CFDI4._0.Archivos.cadenaoriginal_4_0.xslt";
         }
 
@@ -122,7 +119,6 @@ namespace CFDI4._0.ToolsXML
 
             return sXml;
         }
-
 
         // FUNCIÓN QUE CREA Y RETORNA EL XML SELLADO POR MEDIO DE UN OBJ DE TIPO Comprobante - - - - - - - - - - - - - - - - - - - - - - - - 
         public (string, string) CrearXmlSellado(Comprobante objComprobante)
@@ -232,7 +228,6 @@ namespace CFDI4._0.ToolsXML
             return comprobante;
         }
 
-
         public string ConvertirTimbreFiscalAXml(TimbreFiscalDigital timbreFiscal)
         {
             // Crear un documento XML
@@ -259,6 +254,28 @@ namespace CFDI4._0.ToolsXML
             }
         }
 
+        public XmlElement ObtenerPagosEnComplemento(Pagos pago)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
 
+            // Serializar el objeto "Pagos" a XML asegurando el namespace correcto
+            XmlSerializer serializer = new XmlSerializer(typeof(Pagos));
+            XmlSerializerNamespaces namespaces = new XmlSerializerNamespaces();
+            namespaces.Add("pago20", "http://www.sat.gob.mx/Pagos20");
+
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                using (StreamWriter writer = new StreamWriter(memoryStream, new UTF8Encoding(false)))
+                {
+                    serializer.Serialize(writer, pago, namespaces);
+                    writer.Flush();
+                    memoryStream.Position = 0;
+                    xmlDoc.Load(memoryStream);
+                }
+            }
+
+            // Retornar el XmlElement generado
+            return xmlDoc.DocumentElement;
+        }
     }
 }

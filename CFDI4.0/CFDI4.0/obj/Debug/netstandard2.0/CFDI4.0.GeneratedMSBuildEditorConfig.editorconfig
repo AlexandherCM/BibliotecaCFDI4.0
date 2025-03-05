@@ -1,8 +1,5 @@
 is_global = true
 build_property.RootNamespace = CFDI4._0
-build_property.ProjectDir = C:\Users\Desarrollo.05\Documents\ALX\Códigos y lenguajes\Repos\TEMA FACTURACIÓN\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\
+build_property.ProjectDir = C:\Users\AlexS\Documentos\ARCH_ALEX\Codigos y lenguajes\Repos\IMOVS\TemaFacturacion\BibliotecaCFDI4.0\CFDI4.0\CFDI4.0\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
-build_property.CsWinRTUseWindowsUIXamlProjections = false
-build_property.EffectiveAnalysisLevelStyle = 
-build_property.EnableCodeStyleSeverity = 

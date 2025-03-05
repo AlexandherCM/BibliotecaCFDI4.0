@@ -30,7 +30,11 @@ namespace CFDI4._0.CFDI
 
         private ComprobanteAddenda addendaField;
 
-        public TimbreFiscalDigital TimbreFiscalDigital;
+        [XmlIgnore]
+        public TimbreFiscalDigital TimbreFiscalDigital; 
+
+        [XmlIgnore]
+        public Pagos complementoPagos;
 
         private string versionField;
 
