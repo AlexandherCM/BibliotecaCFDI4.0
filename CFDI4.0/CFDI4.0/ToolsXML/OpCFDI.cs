@@ -277,5 +277,23 @@ namespace CFDI4._0.ToolsXML
             // Retornar el XmlElement generado
             return xmlDoc.DocumentElement;
         }
+
+        public Pagos DeserializarPagos(Comprobante obj)
+        {
+            var nodoPagos = obj.Complemento.Any.FirstOrDefault(x => x.Name == "pago20:Pagos");
+
+            var xmlStringPago = nodoPagos.OuterXml; // Obtener XML del nodo 
+            Pagos complementoPagos = null;
+
+            // Deserializar XML a objeto Pagos
+            XmlSerializer serializerTwo = new XmlSerializer(typeof(Pagos));
+            using (StringReader reader = new StringReader(xmlStringPago))
+            {
+                complementoPagos = (Pagos)serializerTwo.Deserialize(reader);
+            }
+
+            return complementoPagos;
+        }
+
     }
 }
