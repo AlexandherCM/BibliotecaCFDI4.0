@@ -54,10 +54,10 @@ namespace CFDI4._0.ToolsXML
             return oComprobante;
         }
 
-        public static PagosPago CrearPago (string FormaDePagoP, decimal Total, decimal SubTotal, decimal ImporteIva, string NumOperacion, string UUID, string Serie, string Folio )
+        public static PagosPago CrearPago (string FormaDePagoP, decimal Total, decimal SubTotal, decimal ImporteIva, string UUID, string Serie, string Folio, string NumOperacion = "")
         {   
             // - - - - - - - - - - - - - - - - - - - - - - - -  
-            return new PagosPago
+            var pago = new PagosPago
             {
                 FechaPago = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss"),
                 FormaDePagoP = FormaDePagoP,
@@ -65,8 +65,6 @@ namespace CFDI4._0.ToolsXML
                 TipoCambioP = 1m,
                 TipoCambioPSpecified = true,
                 Monto = Total,
-                NumOperacion = NumOperacion, 
-
                 // Se añade impuestos trasladados al pago
                 // - - - - - - - - - - - - - - - - - - - - - - - -
                 ImpuestosP = new PagosPagoImpuestosP
@@ -127,6 +125,9 @@ namespace CFDI4._0.ToolsXML
                 }
                 // - - - - - - - - - - - - - - - - - - - - - - - -
             };
+
+            if(!string.IsNullOrEmpty(NumOperacion)) pago.NumOperacion = NumOperacion;
+            return pago;
         }
 
 
