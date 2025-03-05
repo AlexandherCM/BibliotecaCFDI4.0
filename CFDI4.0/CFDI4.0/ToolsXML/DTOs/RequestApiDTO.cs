@@ -19,7 +19,8 @@ namespace CFDI4._0.ToolsXML.DTOs
         public string timbrexml { get; set; }
         public string xml { get; set; }
         public string jsonComprobante { get; set; }
-    }
+        public string base64pdf { get; set; }
+    }   
 
     public class credentialsDTO
     {

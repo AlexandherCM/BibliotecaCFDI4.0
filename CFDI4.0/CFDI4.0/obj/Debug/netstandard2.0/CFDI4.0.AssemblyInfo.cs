@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CFDI4.0")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6af48d6b87288bf02aa38f0e0680814a8d9a487d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e73932088ea9fb9c00474399ea8a440dbeed7505")]
 [assembly: System.Reflection.AssemblyProductAttribute("CFDI4.0")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CFDI4.0")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
