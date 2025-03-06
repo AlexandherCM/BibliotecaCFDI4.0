@@ -31,8 +31,28 @@ namespace CFDI4._0.ToolsXML
             _CadenaOriginalXSLT = "CFDI4._0.Archivos.cadenaoriginal_4_0.xslt";
         }
 
+        //FUNCIÓN QUE AGREGA EL TIMBRE FISCAL AL NODO COMPLEMENTO EN EL XML DEL CFDI - - - - - - - - - - - - - - - - - - - - - - - - -
+        private void ObtenerTimbreFiscalEnComplemento(ComprobanteComplemento complemento, ref TimbreFiscalDigital timbreFiscal)
+        {
+            //Procesar los complementos en el objeto Comprobante
+            foreach (var oComplemento in complemento.Any)
+            {
+                if (!oComplemento.Name.Contains("TimbreFiscalDigital")) continue;
+
+                // Crear el serializador para el complemento TimbreFiscalDigital
+                XmlSerializer serializerComplemento = new XmlSerializer(typeof(TimbreFiscalDigital));
+
+                // Deserializar el complemento usando el OuterXml
+                using (var readerComplemento = new StringReader(oComplemento.OuterXml))
+                {
+                    timbreFiscal =
+                        (TimbreFiscalDigital)serializerComplemento.Deserialize(readerComplemento);
+                }
+            }
+        }
+
         //CREACIÓN DE LA CADENA ORIGINAL CON EL XSLT INCRUSTADO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        private string _CrearCadenaOriginal(string prefactura)
+        public string CrearCadenaOriginal(string xml)    
         {
             string cadenaOriginal = string.Empty;
 
@@ -59,7 +79,7 @@ namespace CFDI4._0.ToolsXML
             }
 
             // Convertir la cadena XML a un XmlReader
-            using (StringReader stringReader = new StringReader(prefactura))
+            using (StringReader stringReader = new StringReader(xml))
             using (XmlReader xmlInputReader = XmlReader.Create(stringReader))
             using (StringWriter sw = new StringWriter())
             using (XmlWriter xwo = XmlWriter.Create(sw, transformador.OutputSettings))
@@ -70,26 +90,6 @@ namespace CFDI4._0.ToolsXML
             }
 
             return cadenaOriginal;
-        }
-
-        //FUNCIÓN QUE AGREGA EL TIMBRE FISCAL AL NODO COMPLEMENTO EN EL XML DEL CFDI - - - - - - - - - - - - - - - - - - - - - - - - -
-        private void ObtenerTimbreFiscalEnComplemento(ComprobanteComplemento complemento, ref TimbreFiscalDigital timbreFiscal)
-        {
-            //Procesar los complementos en el objeto Comprobante
-            foreach (var oComplemento in complemento.Any)
-            {
-                if (!oComplemento.Name.Contains("TimbreFiscalDigital")) continue;
-
-                // Crear el serializador para el complemento TimbreFiscalDigital
-                XmlSerializer serializerComplemento = new XmlSerializer(typeof(TimbreFiscalDigital));
-
-                // Deserializar el complemento usando el OuterXml
-                using (var readerComplemento = new StringReader(oComplemento.OuterXml))
-                {
-                    timbreFiscal =
-                        (TimbreFiscalDigital)serializerComplemento.Deserialize(readerComplemento);
-                }
-            }
         }
 
         // FUNCIÓN QUE CREA Y RETORNA EL XML POR MEDIO DE UN OBJ DE TIPO Comprobante - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -121,7 +121,7 @@ namespace CFDI4._0.ToolsXML
         }
 
         // FUNCIÓN QUE CREA Y RETORNA EL XML SELLADO POR MEDIO DE UN OBJ DE TIPO Comprobante - - - - - - - - - - - - - - - - - - - - - - - - 
-        public (string, string) CrearXmlSellado(Comprobante objComprobante)
+        public string CrearXmlSellado(Comprobante objComprobante)
         {
             //GENERAR NÚMERO DE CERTIFICADO - - - - - - - - - - - - - - - - - - - - - - - - 
             string numeroCertificado, aa, b, c;
@@ -130,7 +130,7 @@ namespace CFDI4._0.ToolsXML
 
             //SE CREA EL XML QUE REPRESENTA LA PREFACTURA
             string XML = ConvertirXML(objComprobante);
-            string cadenaOriginal = _CrearCadenaOriginal(XML);
+            string cadenaOriginal = CrearCadenaOriginal(XML);
 
             //EN ESTE PASO SE SELLA LA PREFACTURA
             SelloDigital oSelloDigital = new SelloDigital();
@@ -139,7 +139,7 @@ namespace CFDI4._0.ToolsXML
             objComprobante.Certificado = oSelloDigital.Certificado(_RutaCerCSD);
             objComprobante.Sello = oSelloDigital.Sellar(cadenaOriginal, _RutaKeyCSD, _ClavePrivada);
 
-            return (ConvertirXML(objComprobante), cadenaOriginal); //EL XML YA INCLUYE LA CADENAORIGINAL PERO EL XML LO IGNORA
+            return ConvertirXML(objComprobante); //EL XML YA INCLUYE LA CADENAORIGINAL PERO EL XML LO IGNORA
         }
 
         //CONVERSIÓN DE TODO EL XML A OBJETO DE C#

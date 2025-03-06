@@ -55,11 +55,17 @@ namespace CFDI4._0.ToolsXML
         }
 
         public static PagosPago CrearPago (string FormaDePagoP, decimal Total, decimal SubTotal, decimal ImporteIva, string UUID, string Serie, string Folio, string NumOperacion = "")
-        {   
+        {
             // - - - - - - - - - - - - - - - - - - - - - - - -  
+            //MODIFICAR CONJUNTOS POR FACTURA PPD
+            //REVISAR CALCULO DE 
+            //ImpSaldoAnt = Total,
+            //ImpPagado = Total,
+            //ImpSaldoInsoluto = 0.00m
+
             var pago = new PagosPago
             {
-                FechaPago = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss"),
+                FechaPago = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss"), //PERMITIR PASAR
                 FormaDePagoP = FormaDePagoP,
                 MonedaP = "MXN",
                 TipoCambioP = 1m,
