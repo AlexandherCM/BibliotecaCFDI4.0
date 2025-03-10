@@ -374,23 +374,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Desarrollo.05\\.nuget\\packages\\": {},
+    "C:\\Users\\AlexS\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Desarrollo.05\\Documents\\ALX\\Códigos y lenguajes\\Repos\\TEMA FACTURACIÓN\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI4.0.csproj",
+      "projectUniqueName": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI4.0.csproj",
       "projectName": "CFDI4.0",
-      "projectPath": "C:\\Users\\Desarrollo.05\\Documents\\ALX\\Códigos y lenguajes\\Repos\\TEMA FACTURACIÓN\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI4.0.csproj",
-      "packagesPath": "C:\\Users\\Desarrollo.05\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Desarrollo.05\\Documents\\ALX\\Códigos y lenguajes\\Repos\\TEMA FACTURACIÓN\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\obj\\",
+      "projectPath": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI4.0.csproj",
+      "packagesPath": "C:\\Users\\AlexS\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Desarrollo.05\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\AlexS\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -399,6 +399,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -416,8 +417,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+      }
     },
     "frameworks": {
       "netstandard2.0": {
@@ -445,7 +445,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
