@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|c:\\users\\alexs\\documentos\\arch_alex\\codigos y lenguajes\\repos\\imovs\\temafacturacion\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\toolsxml\\httpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|solutionrelative:cfdi4.0\\toolsxml\\httpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|c:\\users\\alexs\\documentos\\arch_alex\\codigos y lenguajes\\repos\\imovs\\temafacturacion\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\toolsxml\\initobj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|solutionrelative:cfdi4.0\\toolsxml\\initobj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -27,19 +31,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "HttpService.cs",
+              "DocumentMoniker": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\HttpService.cs",
+              "RelativeDocumentMoniker": "CFDI4.0\\ToolsXML\\HttpService.cs",
+              "ToolTip": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\HttpService.cs",
+              "RelativeToolTip": "CFDI4.0\\ToolsXML\\HttpService.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAACAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T04:34:55.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "InitObj.cs",
               "DocumentMoniker": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\InitObj.cs",
               "RelativeDocumentMoniker": "CFDI4.0\\ToolsXML\\InitObj.cs",
               "ToolTip": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\InitObj.cs",
               "RelativeToolTip": "CFDI4.0\\ToolsXML\\InitObj.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAgwDkAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAgwCMAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-06T21:09:14.068Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "OpCFDI.cs",
               "DocumentMoniker": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\OpCFDI.cs",
               "RelativeDocumentMoniker": "CFDI4.0\\ToolsXML\\OpCFDI.cs",
@@ -51,7 +68,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "RequestApiDTO.cs",
               "DocumentMoniker": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\DTOs\\RequestApiDTO.cs",
               "RelativeDocumentMoniker": "CFDI4.0\\ToolsXML\\DTOs\\RequestApiDTO.cs",

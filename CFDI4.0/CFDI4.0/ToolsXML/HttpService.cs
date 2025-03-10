@@ -6,104 +6,73 @@ using System.Threading.Tasks;
 
 namespace CFDI4._0.ToolsXML
 {
+    using System;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public class HttpService
     {
         private readonly string contentType = "application/json";
         private readonly bool withDomUrl;
         private readonly string _url;
+        private readonly HttpClient _httpClient;
 
         private void CreateHeader(HttpClient httpClient, string jwt)
             => httpClient.DefaultRequestHeaders.Add("Authorization", $"bearer {jwt}");
 
-        public HttpService(string url = "")
+        public HttpService(string url = "", TimeSpan? timeout = null)
         {
             withDomUrl = !string.IsNullOrEmpty(url);
             if (withDomUrl) _url = url;
 
-            //true : Se conatena el prefijo a los end-points
-            //false: Se define el end-point completo en las funciones http
+            _httpClient = new HttpClient
+            {
+                Timeout = timeout ?? TimeSpan.FromSeconds(30) // Si no se especifica, usa 30 segundos por defecto
+            };
         }
-
-        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
         public async Task<string> GetAsync(string endPoint, string jwt = "")
         {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                if (!string.IsNullOrEmpty(jwt)) CreateHeader(httpClient, jwt);
+            if (!string.IsNullOrEmpty(jwt)) CreateHeader(_httpClient, jwt);
 
+            endPoint = withDomUrl ? $"{_url}/{endPoint}" : endPoint;
+            HttpResponseMessage response = await _httpClient.GetAsync(endPoint);
 
-                endPoint = withDomUrl ? $"{_url}/{endPoint}" : endPoint;
-                HttpResponseMessage response = await httpClient.GetAsync(endPoint);
-
-                if (response.IsSuccessStatusCode)
-                    return await response.Content.ReadAsStringAsync();
-
-                return null;
-            }
+            return response.IsSuccessStatusCode ? await response.Content.ReadAsStringAsync() : null;
         }
-
-        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
         public async Task<string> PostAsync(string endPoint, string content, string jwt = "")
         {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                HttpContent httpContent = new StringContent(content, Encoding.UTF8, contentType);
+            HttpContent httpContent = new StringContent(content, Encoding.UTF8, contentType);
+            if (!string.IsNullOrEmpty(jwt)) CreateHeader(_httpClient, jwt);
 
-                if (!string.IsNullOrEmpty(jwt)) CreateHeader(httpClient, jwt);
+            endPoint = withDomUrl ? $"{_url}/{endPoint}" : endPoint;
+            HttpResponseMessage response = await _httpClient.PostAsync(endPoint, httpContent);
 
-                endPoint = withDomUrl ? $"{_url}/{endPoint}" : endPoint;
-                HttpResponseMessage response = await httpClient.PostAsync(endPoint, httpContent);
-
-                if (response.IsSuccessStatusCode)
-                    return await response.Content.ReadAsStringAsync();
-
-                return null;
-            }
+            return response.IsSuccessStatusCode ? await response.Content.ReadAsStringAsync() : null;
         }
 
-
-
-        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-        public async Task<string> PutAsync(string endPoint, string content,  string jwt = "")
+        public async Task<string> PutAsync(string endPoint, string content, string jwt = "")
         {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                HttpContent httpContent = new StringContent(content, Encoding.UTF8, contentType);
+            HttpContent httpContent = new StringContent(content, Encoding.UTF8, contentType);
+            if (!string.IsNullOrEmpty(jwt)) CreateHeader(_httpClient, jwt);
 
-                if (!string.IsNullOrEmpty(jwt)) CreateHeader(httpClient, jwt);
+            endPoint = withDomUrl ? $"{_url}/{endPoint}" : endPoint;
+            HttpResponseMessage response = await _httpClient.PutAsync(endPoint, httpContent);
 
-                endPoint = withDomUrl ? $"{_url}/{endPoint}" : endPoint;
-                HttpResponseMessage response = await httpClient.PutAsync(endPoint, httpContent);
-
-                if (response.IsSuccessStatusCode)
-                    return await response.Content.ReadAsStringAsync();
-
-                return null;
-            }
+            return response.IsSuccessStatusCode ? await response.Content.ReadAsStringAsync() : null;
         }
 
-        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-        public async Task<string> DeleteAsync(string endPoint,  string jwt = "")
+        public async Task<string> DeleteAsync(string endPoint, string jwt = "")
         {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                if (!string.IsNullOrEmpty(jwt)) CreateHeader(httpClient, jwt);
+            if (!string.IsNullOrEmpty(jwt)) CreateHeader(_httpClient, jwt);
 
+            endPoint = withDomUrl ? $"{_url}/{endPoint}" : endPoint;
+            HttpResponseMessage response = await _httpClient.DeleteAsync(endPoint);
 
-                endPoint = withDomUrl ? $"{_url}/{endPoint}" : endPoint;
-                HttpResponseMessage response = await httpClient.DeleteAsync(endPoint);
-
-                if (response.IsSuccessStatusCode)
-                    return await response.Content.ReadAsStringAsync();
-
-                return null;
-            }
+            return response.IsSuccessStatusCode ? await response.Content.ReadAsStringAsync() : null;
         }
-
-
     }
+
 }
