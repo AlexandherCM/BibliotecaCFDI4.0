@@ -925,23 +925,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\AlexS\\.nuget\\packages\\": {},
+    "C:\\Users\\bryan\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI4.0.csproj",
+      "projectUniqueName": "F:\\Trabajos\\IMOVS\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI4.0.csproj",
       "projectName": "CFDI4.0",
-      "projectPath": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI4.0.csproj",
-      "packagesPath": "C:\\Users\\AlexS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\obj\\",
+      "projectPath": "F:\\Trabajos\\IMOVS\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI4.0.csproj",
+      "packagesPath": "C:\\Users\\bryan\\.nuget\\packages\\",
+      "outputPath": "F:\\Trabajos\\IMOVS\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\AlexS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bryan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -950,7 +950,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -969,7 +968,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "netstandard2.0": {
@@ -1001,7 +1000,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

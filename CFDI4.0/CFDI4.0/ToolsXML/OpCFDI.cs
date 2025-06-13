@@ -57,7 +57,7 @@ namespace CFDI4._0.ToolsXML
         }
 
         //CREACIÓN DE LA CADENA ORIGINAL CON EL XSLT INCRUSTADO - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        public string CrearCadenaOriginal(string xml)    
+        public string CrearCadenaOriginal(string xml)
         {
             string cadenaOriginal = string.Empty;
 
@@ -165,9 +165,9 @@ namespace CFDI4._0.ToolsXML
 
             return oComprobante;
         }
-        
+
         //VALIDA Y SERIALIZA EL XML A OBJETO
-        public bool DeserializarXMLCompleto(string xmlContent, out Comprobante objComprobante) 
+        public bool DeserializarXMLCompleto(string xmlContent, out Comprobante objComprobante)
         {
             objComprobante = new Comprobante();
             try
@@ -379,7 +379,7 @@ namespace CFDI4._0.ToolsXML
                 return stringWriter.ToString();
             }
         }
-            
+
         public Cancelacion DeserializarXMLCancelacion(string xmlContent)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Cancelacion));
@@ -387,6 +387,38 @@ namespace CFDI4._0.ToolsXML
             using (StringReader reader = new StringReader(xmlContent))
             {
                 return (Cancelacion)serializer.Deserialize(reader);
+            }
+        }
+        public string GenerarCadenaOriginalTimbrado(Comprobante comprobante)
+        {
+            try
+            {
+
+                if (comprobante.TimbreFiscalDigital == null)
+                {
+                    throw new InvalidOperationException("El Comprobante no contiene el TimbreFiscalDigital, revise que el CFDI haya sido timbrado y su XML deserializado correctamente.");
+                }
+
+
+                TimbreFiscalDigital tfd = comprobante.TimbreFiscalDigital;
+
+                string version = tfd.Version ?? "";
+                string uuid = tfd.UUID ?? "";
+
+                string fechaTimbrado = tfd.FechaTimbrado.ToString("yyyy-MM-ddTHH:mm:ss");
+                string rfcProvCertif = tfd.RfcProvCertif ?? "";
+                string selloCFD = tfd.SelloCFD ?? "";
+                string noCertSAT = tfd.NoCertificadoSAT ?? "";
+
+                string cadenaOriginal = $"||{version}|{uuid}|{fechaTimbrado}|{rfcProvCertif}|{selloCFD}|{noCertSAT}||";
+
+                return cadenaOriginal;
+            }
+            catch (Exception ex)
+            {
+
+                return $"Error al generar la cadena original del Timbre Fiscal Digital: {ex.Message}";
+
             }
         }
 
