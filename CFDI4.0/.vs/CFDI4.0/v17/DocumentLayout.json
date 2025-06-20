@@ -1,21 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\",
+  "WorkspaceRootPath": "D:\\Trabajos\\BibliotecaCFDI4.0\\CFDI4.0\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|c:\\users\\alexs\\documentos\\arch_alex\\codigos y lenguajes\\repos\\imovs\\temafacturacion\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\toolsxml\\opcfdi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|solutionrelative:cfdi4.0\\toolsxml\\opcfdi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|c:\\users\\alexs\\documentos\\arch_alex\\codigos y lenguajes\\repos\\imovs\\temafacturacion\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\cfdi\\cancelacfdi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|solutionrelative:cfdi4.0\\cfdi\\cancelacfdi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|c:\\users\\alexs\\documentos\\arch_alex\\codigos y lenguajes\\repos\\imovs\\temafacturacion\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\toolsxml\\httpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|d:\\trabajos\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\toolsxml\\httpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|solutionrelative:cfdi4.0\\toolsxml\\httpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|c:\\users\\alexs\\documentos\\arch_alex\\codigos y lenguajes\\repos\\imovs\\temafacturacion\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\toolsxml\\opxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|d:\\trabajos\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\cfdi\\cancelacfdi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|solutionrelative:cfdi4.0\\cfdi\\cancelacfdi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|d:\\trabajos\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\toolsxml\\opcfdi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|solutionrelative:cfdi4.0\\toolsxml\\opcfdi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|d:\\trabajos\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\toolsxml\\opxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|solutionrelative:cfdi4.0\\toolsxml\\opxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -26,17 +26,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "HttpService.cs",
-              "DocumentMoniker": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\HttpService.cs",
+              "DocumentMoniker": "D:\\Trabajos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\HttpService.cs",
               "RelativeDocumentMoniker": "CFDI4.0\\ToolsXML\\HttpService.cs",
-              "ToolTip": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\HttpService.cs",
+              "ToolTip": "D:\\Trabajos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\HttpService.cs",
               "RelativeToolTip": "CFDI4.0\\ToolsXML\\HttpService.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwBYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-01T22:28:34.966Z",
               "EditorCaption": ""
@@ -45,9 +45,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "OpXML.cs",
-              "DocumentMoniker": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\OpXML.cs",
+              "DocumentMoniker": "D:\\Trabajos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\OpXML.cs",
               "RelativeDocumentMoniker": "CFDI4.0\\ToolsXML\\OpXML.cs",
-              "ToolTip": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\OpXML.cs",
+              "ToolTip": "D:\\Trabajos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\OpXML.cs",
               "RelativeToolTip": "CFDI4.0\\ToolsXML\\OpXML.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAqwBcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -58,9 +58,9 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "CancelaCfdi.cs",
-              "DocumentMoniker": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI\\CancelaCfdi.cs",
+              "DocumentMoniker": "D:\\Trabajos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI\\CancelaCfdi.cs",
               "RelativeDocumentMoniker": "CFDI4.0\\CFDI\\CancelaCfdi.cs",
-              "ToolTip": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI\\CancelaCfdi.cs",
+              "ToolTip": "D:\\Trabajos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI\\CancelaCfdi.cs",
               "RelativeToolTip": "CFDI4.0\\CFDI\\CancelaCfdi.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAIwBoAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -69,16 +69,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "OpCFDI.cs",
-              "DocumentMoniker": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\OpCFDI.cs",
+              "DocumentMoniker": "D:\\Trabajos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\OpCFDI.cs",
               "RelativeDocumentMoniker": "CFDI4.0\\ToolsXML\\OpCFDI.cs",
-              "ToolTip": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\OpCFDI.cs",
+              "ToolTip": "D:\\Trabajos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\OpCFDI.cs",
               "RelativeToolTip": "CFDI4.0\\ToolsXML\\OpCFDI.cs",
-              "ViewState": "AgIAABEBAAAAAAAAAAAYwDYBAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAABEBAAAAAAAAAAAYwBwBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-01T20:21:51.469Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
             }
           ]
         }

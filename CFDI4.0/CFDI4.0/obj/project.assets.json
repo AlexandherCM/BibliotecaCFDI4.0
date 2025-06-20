@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
+      "BouncyCastle/1.8.9": {
+        "type": "package",
+        "compile": {
+          "lib/BouncyCastle.Crypto.dll": {}
+        },
+        "runtime": {
+          "lib/BouncyCastle.Crypto.dll": {}
+        }
+      },
       "Microsoft.Bcl.Cryptography/9.0.3": {
         "type": "package",
         "dependencies": {
@@ -265,6 +274,19 @@
     }
   },
   "libraries": {
+    "BouncyCastle/1.8.9": {
+      "sha512": "axnBgvdD5n+FnEG6efk/tfKuMFru7R/EoISH9zjh319yb3HD24TEHSAbNN/lTRT2ulOGRxDgOsCjkuk08iwWPg==",
+      "type": "package",
+      "path": "bouncycastle/1.8.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "bouncycastle.1.8.9.nupkg.sha512",
+        "bouncycastle.nuspec",
+        "lib/BouncyCastle.Crypto.dll"
+      ]
+    },
     "Microsoft.Bcl.Cryptography/9.0.3": {
       "sha512": "7yCrJwdlTqY9pfZRBL448ZVCcsahvHjhUn+UYyp1u009LoMbKToYba0g6bKZbQ2x2SGVd703H7iHhGzc9+WiNQ==",
       "type": "package",
@@ -919,6 +941,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "BouncyCastle >= 1.8.9",
       "NETStandard.Library >= 2.0.3",
       "QRCoder >= 1.6.0",
       "System.Security.Cryptography.Xml >= 9.0.3"
@@ -931,11 +954,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Trabajos\\IMOVS\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI4.0.csproj",
+      "projectUniqueName": "D:\\Trabajos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI4.0.csproj",
       "projectName": "CFDI4.0",
-      "projectPath": "F:\\Trabajos\\IMOVS\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI4.0.csproj",
+      "projectPath": "D:\\Trabajos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI4.0.csproj",
       "packagesPath": "C:\\Users\\bryan\\.nuget\\packages\\",
-      "outputPath": "F:\\Trabajos\\IMOVS\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\obj\\",
+      "outputPath": "D:\\Trabajos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -950,6 +973,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -974,6 +998,10 @@
       "netstandard2.0": {
         "targetAlias": "netstandard2.0",
         "dependencies": {
+          "BouncyCastle": {
+            "target": "Package",
+            "version": "[1.8.9, )"
+          },
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
@@ -1003,5 +1031,47 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"BouncyCastle\" 1.8.9 tiene una vulnerabilidad de gravedad moderada conocida, https://github.com/advisories/GHSA-8xfc-gm6g-vgpv",
+      "libraryId": "BouncyCastle",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"BouncyCastle\" 1.8.9 tiene una vulnerabilidad de gravedad moderada conocida, https://github.com/advisories/GHSA-m44j-cfrm-g8qc",
+      "libraryId": "BouncyCastle",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"BouncyCastle\" 1.8.9 tiene una vulnerabilidad de gravedad moderada conocida, https://github.com/advisories/GHSA-v435-xc8x-wvr9",
+      "libraryId": "BouncyCastle",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"BouncyCastle 1.8.9\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \".NETStandard,Version=v2.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "libraryId": "BouncyCastle",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    }
+  ]
 }
