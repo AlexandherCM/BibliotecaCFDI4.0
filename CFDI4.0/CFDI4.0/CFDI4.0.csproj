@@ -10,12 +10,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Archivos\cadenaoriginal_4_0.xslt" />
+    <EmbeddedResource Include="Archivos\cadenaoriginal_4_0.xslt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="QRCoder" Version="1.6.0" />
     <PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ToolsXML\ProcessCFDI\ScanXML.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
 </Project>
