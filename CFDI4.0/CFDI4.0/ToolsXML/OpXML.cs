@@ -8,7 +8,7 @@ namespace CFDI4._0.ToolsXML
     public class OpXML
     {
         //CLASE PROTEGIDA QUE CONFIGURA LA CODIFICACIÓN DEL XML
-        protected class StringWriterWithEncoding : StringWriter
+        public class StringWriterWithEncoding : StringWriter
         {
             private readonly Encoding m_Encoding;
             public StringWriterWithEncoding(Encoding encoding) : base()
