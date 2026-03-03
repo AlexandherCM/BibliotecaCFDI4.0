@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace CFDI4._0.ToolsXML
+namespace CFDI4._0.ToolsXML.Encrypted
 {
     public class SelloDigital
     {
@@ -206,8 +206,8 @@ namespace CFDI4._0.ToolsXML
 
 
             //Declarations
-            Byte[] originalBytes;
-            Byte[] encodedBytes;
+            byte[] originalBytes;
+            byte[] encodedBytes;
             MD5 md5;
 
             //Instantiate MD5CryptoServiceProvider, get bytes for original password and compute hash (encoded password)

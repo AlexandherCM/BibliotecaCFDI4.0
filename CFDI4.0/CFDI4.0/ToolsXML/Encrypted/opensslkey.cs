@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.ComponentModel;
 
-namespace CFDI4._0.ToolsXML
+namespace CFDI4._0.ToolsXML.Encrypted
 {
 
     public class Win32
@@ -27,7 +27,7 @@ namespace CFDI4._0.ToolsXML
         [DllImport("crypt32.dll", SetLastError = true)]
         public static extern bool CertStrToName(
            uint dwCertEncodingType,
-           String pszX500,
+           string pszX500,
            uint dwStrType,
            IntPtr pvReserved,
            [In, Out] byte[] pbEncoded,
@@ -45,9 +45,9 @@ namespace CFDI4._0.ToolsXML
     public struct CRYPT_KEY_PROV_INFO
     {
         [MarshalAs(UnmanagedType.LPWStr)]
-        public String pwszContainerName;
+        public string pwszContainerName;
         [MarshalAs(UnmanagedType.LPWStr)]
-        public String pwszProvName;
+        public string pwszProvName;
         public uint dwProvType;
         public uint dwFlags;
         public uint cProvParam;
@@ -69,24 +69,24 @@ namespace CFDI4._0.ToolsXML
     public class opensslkey
     {
 
-        const String pemprivheader = "-----BEGIN RSA PRIVATE KEY-----";
-        const String pemprivfooter = "-----END RSA PRIVATE KEY-----";
-        const String pempubheader = "-----BEGIN PUBLIC KEY-----";
-        const String pempubfooter = "-----END PUBLIC KEY-----";
-        const String pemp8header = "-----BEGIN PRIVATE KEY-----";
-        const String pemp8footer = "-----END PRIVATE KEY-----";
-        const String pemp8encheader = "-----BEGIN ENCRYPTED PRIVATE KEY-----";
-        const String pemp8encfooter = "-----END ENCRYPTED PRIVATE KEY-----";
+        const string pemprivheader = "-----BEGIN RSA PRIVATE KEY-----";
+        const string pemprivfooter = "-----END RSA PRIVATE KEY-----";
+        const string pempubheader = "-----BEGIN PUBLIC KEY-----";
+        const string pempubfooter = "-----END PUBLIC KEY-----";
+        const string pemp8header = "-----BEGIN PRIVATE KEY-----";
+        const string pemp8footer = "-----END PRIVATE KEY-----";
+        const string pemp8encheader = "-----BEGIN ENCRYPTED PRIVATE KEY-----";
+        const string pemp8encfooter = "-----END ENCRYPTED PRIVATE KEY-----";
 
 
         static bool verbose = false;
         
         //--------   Get the binary PKCS #8 PRIVATE key   --------
-        public static byte[] DecodePkcs8PrivateKey(String instr)
+        public static byte[] DecodePkcs8PrivateKey(string instr)
         {
-            const String pemp8header = "-----BEGIN PRIVATE KEY-----";
-            const String pemp8footer = "-----END PRIVATE KEY-----";
-            String pemstr = instr.Trim();
+            const string pemp8header = "-----BEGIN PRIVATE KEY-----";
+            const string pemp8footer = "-----END PRIVATE KEY-----";
+            string pemstr = instr.Trim();
             byte[] binkey;
             if (!pemstr.StartsWith(pemp8header) || !pemstr.EndsWith(pemp8footer))
                 return null;
@@ -94,13 +94,13 @@ namespace CFDI4._0.ToolsXML
             sb.Replace(pemp8header, "");  //remove headers/footers, if present
             sb.Replace(pemp8footer, "");
 
-            String pubstr = sb.ToString().Trim();   //get string after removing leading/trailing whitespace
+            string pubstr = sb.ToString().Trim();   //get string after removing leading/trailing whitespace
 
             try
             {
                 binkey = Convert.FromBase64String(pubstr);
             }
-            catch (System.FormatException)
+            catch (FormatException)
             {       //if can't b64 decode, data is not valid
                 return null;
             }
@@ -181,11 +181,11 @@ namespace CFDI4._0.ToolsXML
 
 
         //--------   Get the binary PKCS #8 Encrypted PRIVATE key   --------
-        public static byte[] DecodePkcs8EncPrivateKey(String instr)
+        public static byte[] DecodePkcs8EncPrivateKey(string instr)
         {
-            const String pemp8encheader = "-----BEGIN ENCRYPTED PRIVATE KEY-----";
-            const String pemp8encfooter = "-----END ENCRYPTED PRIVATE KEY-----";
-            String pemstr = instr.Trim();
+            const string pemp8encheader = "-----BEGIN ENCRYPTED PRIVATE KEY-----";
+            const string pemp8encfooter = "-----END ENCRYPTED PRIVATE KEY-----";
+            string pemstr = instr.Trim();
             byte[] binkey;
             if (!pemstr.StartsWith(pemp8encheader) || !pemstr.EndsWith(pemp8encfooter))
                 return null;
@@ -193,13 +193,13 @@ namespace CFDI4._0.ToolsXML
             sb.Replace(pemp8encheader, "");  //remove headers/footers, if present
             sb.Replace(pemp8encfooter, "");
 
-            String pubstr = sb.ToString().Trim();   //get string after removing leading/trailing whitespace
+            string pubstr = sb.ToString().Trim();   //get string after removing leading/trailing whitespace
 
             try
             {
                 binkey = Convert.FromBase64String(pubstr);
             }
-            catch (System.FormatException)
+            catch (FormatException)
             {       //if can't b64 decode, data is not valid
                 return null;
             }
@@ -403,11 +403,11 @@ namespace CFDI4._0.ToolsXML
 
 
         //--------   Get the binary RSA PUBLIC key   --------
-        public static byte[] DecodeOpenSSLPublicKey(String instr)
+        public static byte[] DecodeOpenSSLPublicKey(string instr)
         {
-            const String pempubheader = "-----BEGIN PUBLIC KEY-----";
-            const String pempubfooter = "-----END PUBLIC KEY-----";
-            String pemstr = instr.Trim();
+            const string pempubheader = "-----BEGIN PUBLIC KEY-----";
+            const string pempubfooter = "-----END PUBLIC KEY-----";
+            string pemstr = instr.Trim();
             byte[] binkey;
             if (!pemstr.StartsWith(pempubheader) || !pemstr.EndsWith(pempubfooter))
                 return null;
@@ -415,13 +415,13 @@ namespace CFDI4._0.ToolsXML
             sb.Replace(pempubheader, "");  //remove headers/footers, if present
             sb.Replace(pempubfooter, "");
 
-            String pubstr = sb.ToString().Trim();   //get string after removing leading/trailing whitespace
+            string pubstr = sb.ToString().Trim();   //get string after removing leading/trailing whitespace
 
             try
             {
                 binkey = Convert.FromBase64String(pubstr);
             }
-            catch (System.FormatException)
+            catch (FormatException)
             {       //if can't b64 decode, data is not valid
                 return null;
             }
@@ -508,7 +508,7 @@ namespace CFDI4._0.ToolsXML
 
                 if (binr.ReadByte() != 0x02)            //expect an Integer for the exponent data
                     return null;
-                int expbytes = (int)binr.ReadByte();        // should only need one byte for actual exponent data (for all useful values)
+                int expbytes = binr.ReadByte();        // should only need one byte for actual exponent data (for all useful values)
                 byte[] exponent = binr.ReadBytes(expbytes);
 
 
@@ -669,11 +669,11 @@ namespace CFDI4._0.ToolsXML
 
 
         //-----  Get the binary RSA PRIVATE key, decrypting if necessary ----
-        public static byte[] DecodeOpenSSLPrivateKey(String instr)
+        public static byte[] DecodeOpenSSLPrivateKey(string instr)
         {
-            const String pemprivheader = "-----BEGIN RSA PRIVATE KEY-----";
-            const String pemprivfooter = "-----END RSA PRIVATE KEY-----";
-            String pemstr = instr.Trim();
+            const string pemprivheader = "-----BEGIN RSA PRIVATE KEY-----";
+            const string pemprivfooter = "-----END RSA PRIVATE KEY-----";
+            string pemstr = instr.Trim();
             byte[] binkey;
             if (!pemstr.StartsWith(pemprivheader) || !pemstr.EndsWith(pemprivfooter))
                 return null;
@@ -682,14 +682,14 @@ namespace CFDI4._0.ToolsXML
             sb.Replace(pemprivheader, "");  //remove headers/footers, if present
             sb.Replace(pemprivfooter, "");
 
-            String pvkstr = sb.ToString().Trim();   //get string after removing leading/trailing whitespace
+            string pvkstr = sb.ToString().Trim();   //get string after removing leading/trailing whitespace
 
             try
             {        // if there are no PEM encryption info lines, this is an UNencrypted PEM private key
                 binkey = Convert.FromBase64String(pvkstr);
                 return binkey;
             }
-            catch (System.FormatException)
+            catch (FormatException)
             {       //if can't b64 decode, it must be an encrypted private key
                     //Console.WriteLine("Not an unencrypted OpenSSL PEM private key");  
             }
@@ -699,10 +699,10 @@ namespace CFDI4._0.ToolsXML
             //-------- read PEM encryption info. lines and extract salt -----
             if (!str.ReadLine().StartsWith("Proc-Type: 4,ENCRYPTED"))
                 return null;
-            String saltline = str.ReadLine();
+            string saltline = str.ReadLine();
             if (!saltline.StartsWith("DEK-Info: DES-EDE3-CBC,"))
                 return null;
-            String saltstr = saltline.Substring(saltline.IndexOf(",") + 1).Trim();
+            string saltstr = saltline.Substring(saltline.IndexOf(",") + 1).Trim();
             byte[] salt = new byte[saltstr.Length / 2];
             for (int i = 0; i < salt.Length; i++)
                 salt[i] = Convert.ToByte(saltstr.Substring(i * 2, 2), 16);
@@ -710,13 +710,13 @@ namespace CFDI4._0.ToolsXML
                 return null;
 
             //------ remaining b64 data is encrypted RSA key ----
-            String encryptedstr = str.ReadToEnd();
+            string encryptedstr = str.ReadToEnd();
 
             try
             {   //should have b64 encrypted RSA key now
                 binkey = Convert.FromBase64String(encryptedstr);
             }
-            catch (System.FormatException)
+            catch (FormatException)
             {  // bad b64 data.
                 return null;
             }
@@ -834,15 +834,15 @@ namespace CFDI4._0.ToolsXML
 
 
 
-        private static IntPtr CreateUnsignedCertCntxt(String keycontainer, String provider, uint KEYSPEC, uint cspflags, String DN)
+        private static IntPtr CreateUnsignedCertCntxt(string keycontainer, string provider, uint KEYSPEC, uint cspflags, string DN)
         {
             const uint AT_KEYEXCHANGE = 0x00000001;
             const uint AT_SIGNATURE = 0x00000002;
             const uint CRYPT_MACHINE_KEYSET = 0x00000020;
             const uint PROV_RSA_FULL = 0x00000001;
-            const String MS_DEF_PROV = "Microsoft Base Cryptographic Provider v1.0";
-            const String MS_STRONG_PROV = "Microsoft Strong Cryptographic Provider";
-            const String MS_ENHANCED_PROV = "Microsoft Enhanced Cryptographic Provider v1.0";
+            const string MS_DEF_PROV = "Microsoft Base Cryptographic Provider v1.0";
+            const string MS_STRONG_PROV = "Microsoft Strong Cryptographic Provider";
+            const string MS_ENHANCED_PROV = "Microsoft Enhanced Cryptographic Provider v1.0";
             const uint CERT_CREATE_SELFSIGN_NO_SIGN = 1;
             const uint X509_ASN_ENCODING = 0x00000001;
             const uint CERT_X500_NAME_STR = 3;
@@ -893,7 +893,7 @@ namespace CFDI4._0.ToolsXML
 
 
 
-        private static SecureString GetSecPswd(String prompt)
+        private static SecureString GetSecPswd(string prompt)
         {
             SecureString password = new SecureString();
 
@@ -927,7 +927,7 @@ namespace CFDI4._0.ToolsXML
                     Console.WriteLine();
                     return password;
                 }
-                else if (Char.IsLetterOrDigit(cki.KeyChar) || Char.IsSymbol(cki.KeyChar))
+                else if (char.IsLetterOrDigit(cki.KeyChar) || char.IsSymbol(cki.KeyChar))
                 {
                     if (password.Length < 20)
                     {
@@ -985,7 +985,7 @@ namespace CFDI4._0.ToolsXML
             Console.WriteLine("Removable property: " + keyInfo.Removable);
             Console.WriteLine("UniqueKeyContainerName property: " + keyInfo.UniqueKeyContainerName);
         }
-        private static void showBytes(String info, byte[] data)
+        private static void showBytes(string info, byte[] data)
         {
             Console.WriteLine("{0}  [{1} bytes]", info, data.Length);
             for (int i = 1; i <= data.Length; i++)
@@ -1001,7 +1001,7 @@ namespace CFDI4._0.ToolsXML
 
 
 
-        private static byte[] GetFileBytes(String filename)
+        private static byte[] GetFileBytes(string filename)
         {
             if (!File.Exists(filename))
                 return null;
@@ -1018,7 +1018,7 @@ namespace CFDI4._0.ToolsXML
 
 
 
-        private static void PutFileBytes(String outfile, byte[] data, int bytes)
+        private static void PutFileBytes(string outfile, byte[] data, int bytes)
         {
             FileStream fs = null;
             if (bytes > data.Length)

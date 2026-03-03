@@ -12,6 +12,7 @@ using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.Security.Cryptography;
+using CFDI4._0.ToolsXML.Encrypted;
 
 
 namespace CFDI4._0.ToolsXML
