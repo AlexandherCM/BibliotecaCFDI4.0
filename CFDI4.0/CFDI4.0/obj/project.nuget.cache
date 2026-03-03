@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6weqqzU0zRk=",
+  "dgSpecHash": "3TDEz1sbJLU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Codigos y lenguajes\\Repos\\IMOVS\\TemaFacturacion\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI4.0.csproj",
+  "projectFilePath": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Tema Facturación\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\CFDI4.0.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\AlexS\\.nuget\\packages\\microsoft.bcl.cryptography\\9.0.3\\microsoft.bcl.cryptography.9.0.3.nupkg.sha512",
     "C:\\Users\\AlexS\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",

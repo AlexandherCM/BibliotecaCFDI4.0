@@ -28,7 +28,7 @@ namespace CFDI4._0.ToolsXML
 
             _httpClient = new HttpClient
             {
-                Timeout = timeout ?? TimeSpan.FromSeconds(30) // Si no se especifica, usa 30 segundos por defecto
+                Timeout = timeout ?? TimeSpan.FromMinutes(10) // Si no se especifica, usa 30 segundos por defecto
             };
         }
 
