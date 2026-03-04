@@ -3,14 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Tema Facturaci\u00F3n\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|c:\\users\\alexs\\documentos\\arch_alex\\tema facturaci\u00F3n\\repos\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\toolsxml\\services\\scanxmlservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|solutionrelative:cfdi4.0\\toolsxml\\services\\scanxmlservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|c:\\users\\alexs\\documentos\\arch_alex\\tema facturaci\u00F3n\\repos\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\toolsxml\\services\\buildxml\\cfdi_4_0\\cancelacion_40\\opcancelacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|solutionrelative:cfdi4.0\\toolsxml\\services\\buildxml\\cfdi_4_0\\cancelacion_40\\opcancelacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|c:\\users\\alexs\\documentos\\arch_alex\\tema facturaci\u00F3n\\repos\\bibliotecacfdi4.0\\cfdi4.0\\cfdi4.0\\toolsxml\\services\\buildxml\\cfdi_4_0\\comprobante_40\\opcfdi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{517864AA-A11E-40B0-98AA-B0F608D61642}|CFDI4.0\\CFDI4.0.csproj|solutionrelative:cfdi4.0\\toolsxml\\services\\buildxml\\cfdi_4_0\\comprobante_40\\opcfdi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -27,40 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ScanXMLService.cs",
-              "DocumentMoniker": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Tema Facturaci\u00F3n\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\Services\\ScanXMLService.cs",
-              "RelativeDocumentMoniker": "CFDI4.0\\ToolsXML\\Services\\ScanXMLService.cs",
-              "ToolTip": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Tema Facturaci\u00F3n\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\Services\\ScanXMLService.cs",
-              "RelativeToolTip": "CFDI4.0\\ToolsXML\\Services\\ScanXMLService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T00:51:24.226Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "OpCFDI.cs",
               "DocumentMoniker": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Tema Facturaci\u00F3n\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\Services\\BuildXML\\CFDI_4_0\\Comprobante_40\\OpCFDI.cs",
               "RelativeDocumentMoniker": "CFDI4.0\\ToolsXML\\Services\\BuildXML\\CFDI_4_0\\Comprobante_40\\OpCFDI.cs",
-              "ToolTip": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Tema Facturaci\u00F3n\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\Services\\BuildXML\\CFDI_4_0\\Comprobante_40\\OpCFDI.cs*",
-              "RelativeToolTip": "CFDI4.0\\ToolsXML\\Services\\BuildXML\\CFDI_4_0\\Comprobante_40\\OpCFDI.cs*",
-              "ViewState": "AgIAAFMBAAAAAAAAAAAiwF4BAABBAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Tema Facturaci\u00F3n\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\Services\\BuildXML\\CFDI_4_0\\Comprobante_40\\OpCFDI.cs",
+              "RelativeToolTip": "CFDI4.0\\ToolsXML\\Services\\BuildXML\\CFDI_4_0\\Comprobante_40\\OpCFDI.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T00:44:51.339Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "OpCancelacion.cs",
-              "DocumentMoniker": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Tema Facturaci\u00F3n\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\Services\\BuildXML\\CFDI_4_0\\Cancelacion_40\\OpCancelacion.cs",
-              "RelativeDocumentMoniker": "CFDI4.0\\ToolsXML\\Services\\BuildXML\\CFDI_4_0\\Cancelacion_40\\OpCancelacion.cs",
-              "ToolTip": "C:\\Users\\AlexS\\Documentos\\ARCH_ALEX\\Tema Facturaci\u00F3n\\Repos\\BibliotecaCFDI4.0\\CFDI4.0\\CFDI4.0\\ToolsXML\\Services\\BuildXML\\CFDI_4_0\\Cancelacion_40\\OpCancelacion.cs*",
-              "RelativeToolTip": "CFDI4.0\\ToolsXML\\Services\\BuildXML\\CFDI_4_0\\Cancelacion_40\\OpCancelacion.cs*",
-              "ViewState": "AgIAABwAAAAAAAAAAAAgwCkAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T00:23:24.415Z",
+              "WhenOpened": "2026-03-04T04:11:47.225Z",
               "EditorCaption": ""
             }
           ]

@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.ComponentModel;
 
-namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Encrypted
+namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
 {
 
     public class Win32

@@ -13,7 +13,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.Security.Cryptography;
 using CFDI4._0.ToolsXML.Helpers;
-using CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Encrypted;
+using CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature;
 
 
 namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40    
@@ -345,99 +345,5 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40
             }
         }
         //CADENA ORIGINAL A PARTIR DEL TIMBRE FISCAL UUID - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-
-        //PROCEDIMIENTOS PARA LA CANCELACIÓN DE CFDIs - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-        public SignatureType AgregarFirmaACancelacion(Cancelacion cancelacion)
-        {
-            // Registrar algoritmo de canonicalización
-            CryptoConfig.AddAlgorithm(typeof(XmlDsigC14NTransform), "http://www.w3.org/TR/2001/REC-xml-c14n-20010315");
-
-            // 1. Serializar el objeto Cancelacion a XmlDocument
-            var xmlDoc = new XmlDocument();
-            xmlDoc.PreserveWhitespace = true;
-
-            var ns = new XmlSerializerNamespaces();
-            ns.Add("", "http://cancelacfd.sat.gob.mx");
-            ns.Add("xsi", "http://www.w3.org/2001/XMLSchema-instance");
-            ns.Add("xsd", "http://www.w3.org/2001/XMLSchema");
-
-            var serializer = new XmlSerializer(typeof(Cancelacion));
-            using (var stringWriter = new StringWriter())
-            using (var xmlWriter = XmlWriter.Create(stringWriter, new XmlWriterSettings { OmitXmlDeclaration = true }))
-            {
-                serializer.Serialize(xmlWriter, cancelacion, ns);
-                xmlDoc.LoadXml(stringWriter.ToString());
-            }
-
-            // 2. Obtener clave privada
-            SecureString securePwd = new SecureString();
-            foreach (char c in _ClavePrivada)
-                securePwd.AppendChar(c);
-
-            var privateKey = opensslkey.DecodeEncryptedPrivateKeyInfo(File.ReadAllBytes(_RutaKeyCSD), securePwd);
-
-            // 3. Cargar certificado
-            var cert = new X509Certificate2(_RutaCerCSD);
-
-            // 4. Crear firma
-            SignedXml signedXml = new SignedXml(xmlDoc)
-            {
-                SigningKey = privateKey
-            };
-
-            signedXml.SignedInfo.CanonicalizationMethod = SignedXml.XmlDsigC14NTransformUrl;
-            signedXml.SignedInfo.SignatureMethod = SignedXml.XmlDsigRSASHA1Url; // SHA1
-
-            Reference reference = new Reference("");
-            reference.AddTransform(new XmlDsigEnvelopedSignatureTransform());
-            reference.DigestMethod = SignedXml.XmlDsigSHA1Url; // SHA1
-            signedXml.AddReference(reference);
-
-            // Crear X509Data con IssuerSerial
-            var keyInfo = new KeyInfo();
-            var x509Data = new KeyInfoX509Data(cert);
-            x509Data.AddIssuerSerial(cert.Issuer, cert.SerialNumber); // IssuerSerial
-            keyInfo.AddClause(x509Data);
-            signedXml.KeyInfo = keyInfo;
-
-            // 5. Generar la firma
-            signedXml.ComputeSignature();
-            XmlElement xmlSignature = signedXml.GetXml();
-
-            // 6. Deserializar la firma a SignatureType
-            using (var reader = new XmlNodeReader(xmlSignature))
-            {
-                XmlSerializer signatureSerializer = new XmlSerializer(typeof(SignatureType));
-                return (SignatureType)signatureSerializer.Deserialize(reader);
-            }
-        }
-
-
-        public string ConvertirXML(Cancelacion cancelacion)
-        {
-            var ns = new XmlSerializerNamespaces();
-            ns.Add(string.Empty, "http://cancelacfd.sat.gob.mx");
-
-            XmlSerializer serializer = new XmlSerializer(typeof(Cancelacion));
-            using (var stringWriter = new StringWriterWithEncoding(Encoding.UTF8))
-            {
-                serializer.Serialize(stringWriter, cancelacion, ns);
-                return stringWriter.ToString();
-            }
-        }
-
-        public Cancelacion DeserializarXMLCancelacion(string xmlContent)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(Cancelacion));
-
-            using (StringReader reader = new StringReader(xmlContent))
-            {
-                return (Cancelacion)serializer.Deserialize(reader);
-            }
-        }
-
-
-
     }
 }

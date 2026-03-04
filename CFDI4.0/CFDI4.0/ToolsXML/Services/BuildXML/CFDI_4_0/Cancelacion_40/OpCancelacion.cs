@@ -10,72 +10,37 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Xml.Linq;
+using System.Xml.Serialization;
+using static CFDI4._0.ToolsXML.Helpers.OpXML;
 
 namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Cancelacion_40
 {
     public class OpCancelacion
     {
-        public static byte[] CreatePFX(byte[] bytesCER, byte[] bytesKEY, string password)
+        //ANALIZAR EL CASO DE LA URL QUE SE COLOCA EN EL CASO DE UNA RETENCIÓN
+        public string ConvertirXML(Cancelacion cancelacion)
         {
-            var certParser = new X509CertificateParser();
-            Org.BouncyCastle.X509.X509Certificate bcCert = certParser.ReadCertificate(bytesCER);
-            if (bcCert == null)
-                throw new CryptographicException("No se pudo leer el certificado (.cer).");
+            var ns = new XmlSerializerNamespaces();
+            ns.Add(string.Empty, "http://cancelacfd.sat.gob.mx");
 
-            // Desencriptar llave privada
-            AsymmetricKeyParameter bcPrivKey = PrivateKeyFactory.DecryptKey(password.ToCharArray(), bytesKEY);
-            if (bcPrivKey == null || !bcPrivKey.IsPrivate)
-                throw new CryptographicException("No se pudo desencriptar la llave privada (.key). Verifica contraseña.");
-
-            // Crear PKCS12 (PFX)
-            var store = new Pkcs12StoreBuilder().Build();
-            string alias = "csd";
-
-            var certEntry = new X509CertificateEntry(bcCert);
-            store.SetKeyEntry(alias, new AsymmetricKeyEntry(bcPrivKey), new[] { certEntry });
-
-            using (var ms = new MemoryStream())
+            XmlSerializer serializer = new XmlSerializer(typeof(Cancelacion));
+            using (var stringWriter = new StringWriterWithEncoding(Encoding.UTF8))
             {
-                store.Save(ms, password.ToCharArray(), new SecureRandom());
-                return ms.ToArray();
+                serializer.Serialize(stringWriter, cancelacion, ns);
+                return stringWriter.ToString();
             }
         }
 
-        //public static string SignCancelacion(List<CancelacionDTO> folios, string rfcEmisor, byte[] pfx, string password, bool isRetencion)
-        //{
-        //    try
-        //    {
-        //        string xml;
-        //        xml = CreateCancelationXML(folios, rfcEmisor, isRetencion);
-        //        return SignUtils.SignXml(xml, pfx, password);
-        //    }
-        //    catch (CryptographicException e)
-        //    {
-        //        throw new CryptographicException("Error al sellar el XML.", e);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw new Exception("Los folios no tienen un formato valido.", e);
-        //    }
-        //}
-
-        public static string CreateCancelationXML(List<CancelacionDTO> foliosFiscales, string rfcEmisor, bool isRetencion = false)
+        public Cancelacion DeserializarXMLCancelacion(string xmlContent)
         {
-            XNamespace satCancelacionXmlNamespace = isRetencion ? "http://www.sat.gob.mx/esquemas/retencionpago/1" : "http://cancelacfd.sat.gob.mx";
-            var xmlSolicitud = new XElement(satCancelacionXmlNamespace + "Cancelacion",
-                                            new XAttribute(XNamespace.Xmlns + "xsi", "http://www.w3.org/2001/XMLSchema-instance"),
-                                            new XAttribute(XNamespace.Xmlns + "xsd", "http://www.w3.org/2001/XMLSchema"),
-                                            new XAttribute("Fecha", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
-                                            new XAttribute("RfcEmisor", rfcEmisor),
-                                            from uuid in foliosFiscales
-                                            select new XElement(satCancelacionXmlNamespace + "Folios",
-                                                new XElement(satCancelacionXmlNamespace + "Folio",
-                                                new XAttribute("UUID", uuid.Folio.ToString()),
-                                                new XAttribute("Motivo", Convert.ToInt16(uuid.Motivo).ToString().PadLeft(2, '0')),
-                                                new XAttribute("FolioSustitucion", uuid.FolioSustitucion != null ? uuid.FolioSustitucion.ToString() : string.Empty)
-                                                )));
-            return xmlSolicitud.ToString();
+            XmlSerializer serializer = new XmlSerializer(typeof(Cancelacion));
+
+            using (StringReader reader = new StringReader(xmlContent))
+            {
+                return (Cancelacion)serializer.Deserialize(reader);
+            }
         }
     }
 }
