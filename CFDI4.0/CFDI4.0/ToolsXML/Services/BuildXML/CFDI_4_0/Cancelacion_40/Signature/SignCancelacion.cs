@@ -7,7 +7,7 @@ using System.Xml;
 
 namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Cancelacion_40.Signature
 {
-    public class SignUtils
+    public static class SignCancelacion 
     {
         public static string SignXml(string xml, byte[] pfx, string password)
         {
@@ -16,7 +16,7 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Cancelacion_40.Signature
             doc.LoadXml(xml);
 
             XmlElement signature = BuildSatCancelSignature(doc, pfx, password);
-
+                
             // Evita saltos/espacios en Base64 (algunos PACs son estrictos)
             NormalizeBase64(signature, "SignatureValue");
             NormalizeBase64(signature, "X509Certificate");
@@ -33,7 +33,7 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Cancelacion_40.Signature
             return doc.OuterXml;
         }
 
-        public static XmlElement BuildSatCancelSignature(XmlDocument doc, byte[] pfx, string pfxPassword)
+        private static XmlElement BuildSatCancelSignature(XmlDocument doc, byte[] pfx, string pfxPassword)
         {
             // NETSTANDARD2.0: no existe EphemeralKeySet.
             // Strategy: intentar MachineKeySet (Windows services) y si falla, fallback a Exportable.

@@ -2,20 +2,17 @@
 using Org.BouncyCastle.Pkcs;
 using Org.BouncyCastle.Security;
 using Org.BouncyCastle.X509;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace CFDI4._0.ToolsXML.Helpers
 {
-    public class PFX  
+    public static class PFX  
     {
         public static byte[] Create(byte[] bytesCER, byte[] bytesKEY, string password)
         {
             var certParser = new X509CertificateParser();
-            Org.BouncyCastle.X509.X509Certificate bcCert = certParser.ReadCertificate(bytesCER);
+            X509Certificate bcCert = certParser.ReadCertificate(bytesCER);
             if (bcCert == null)
                 throw new CryptographicException("No se pudo leer el certificado (.cer).");
 

@@ -4,7 +4,7 @@ using System.IO;
 
 namespace CFDI4._0.ToolsXML.Helpers
 {
-    public class Qr
+    public static class Qr
     {
         public static string GenerateQRCode(string text)
         {
@@ -23,11 +23,10 @@ namespace CFDI4._0.ToolsXML.Helpers
                 ms.Write(bitMap, 0, bitMap.Length);
                 byte[] byteImage = ms.ToArray();
                 string base64 = Convert.ToBase64String(byteImage);
+
                 //return $"data:image/png;base64,{base64}";
                 return base64;
             }
         }
-
     }
-
 }

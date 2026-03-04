@@ -9,9 +9,8 @@ using System.ComponentModel;
 namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
 {
 
-    public class Win32
+    internal class Win32
     {
-
         [DllImport("crypt32.dll", SetLastError = true)]
         public static extern IntPtr CertCreateSelfSignCertificate(
            IntPtr hProv,
@@ -37,12 +36,11 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
         [DllImport("crypt32.dll", SetLastError = true)]
         public static extern bool CertFreeCertificateContext(
            IntPtr hCertStore);
-
     }
 
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct CRYPT_KEY_PROV_INFO
+    internal struct CRYPT_KEY_PROV_INFO
     {
         [MarshalAs(UnmanagedType.LPWStr)]
         public string pwszContainerName;
@@ -56,19 +54,14 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct CERT_NAME_BLOB
+    internal struct CERT_NAME_BLOB
     {
         public int cbData;
         public IntPtr pbData;
     }
 
-
-
-
-
-    public class opensslkey
+    internal class opensslkey
     {
-
         const string pemprivheader = "-----BEGIN RSA PRIVATE KEY-----";
         const string pemprivfooter = "-----END RSA PRIVATE KEY-----";
         const string pempubheader = "-----BEGIN PUBLIC KEY-----";
@@ -106,10 +99,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
             }
             return binkey;
         }
-
-
-
-
 
         //------- Parses binary asn.1 PKCS #8 PrivateKeyInfo; returns RSACryptoServiceProvider ---
         public static RSACryptoServiceProvider DecodePrivateKeyInfo(byte[] pkcs8)
@@ -176,10 +165,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
 
         }
 
-
-
-
-
         //--------   Get the binary PKCS #8 Encrypted PRIVATE key   --------
         public static byte[] DecodePkcs8EncPrivateKey(string instr)
         {
@@ -205,10 +190,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
             }
             return binkey;
         }
-
-
-
-
 
         //------- Parses binary asn.1 EncryptedPrivateKeyInfo; returns RSACryptoServiceProvider ---
         public static RSACryptoServiceProvider DecodeEncryptedPrivateKeyInfo(byte[] encpkcs8, SecureString secpswd)
@@ -362,10 +343,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
 
         }
 
-
-
-
-
         //  ------  Uses PBKD2 to derive a 3DES key and decrypts data --------
         public static byte[] DecryptPBDK2(byte[] edata, byte[] salt, byte[] IV, SecureString secpswd, int iterations)
         {
@@ -398,10 +375,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
             }
         }
 
-
-
-
-
         //--------   Get the binary RSA PUBLIC key   --------
         public static byte[] DecodeOpenSSLPublicKey(string instr)
         {
@@ -427,10 +400,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
             }
             return binkey;
         }
-
-
-
-
 
         //------- Parses binary asn.1 X509 SubjectPublicKeyInfo; returns RSACryptoServiceProvider ---
         public static RSACryptoServiceProvider DecodeX509PublicKey(byte[] x509key)
@@ -532,10 +501,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
 
         }
 
-
-
-
-
         //------- Parses binary ans.1 RSA private key; returns RSACryptoServiceProvider  ---
         public static RSACryptoServiceProvider DecodeRSAPrivateKey(byte[] privkey)
         {
@@ -624,10 +589,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
             finally { binr.Close(); }
         }
 
-
-
-
-
         private static int GetIntegerSize(BinaryReader binr)
         {
             byte bt = 0;
@@ -663,10 +624,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
             binr.BaseStream.Seek(-1, SeekOrigin.Current);       //last ReadByte wasn't a removed zero, so back up a byte
             return count;
         }
-
-
-
-
 
         //-----  Get the binary RSA PRIVATE key, decrypting if necessary ----
         public static byte[] DecodeOpenSSLPrivateKey(string instr)
@@ -742,12 +699,7 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
             }
         }
 
-
-
-
-
         // ----- Decrypt the 3DES encrypted RSA private key ----------
-
         public static byte[] DecryptKey(byte[] cipherData, byte[] desKey, byte[] IV)
         {
             MemoryStream memst = new MemoryStream();
@@ -768,10 +720,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
             byte[] decryptedData = memst.ToArray();
             return decryptedData;
         }
-
-
-
-
 
         //-----   OpenSSL PBKD uses only one hash cycle (count); miter is number of iterations required to build sufficient bytes ---
         private static byte[] GetOpenSSL3deskey(byte[] salt, SecureString secpswd, int count, int miter)
@@ -830,10 +778,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
             return deskey;
         }
 
-
-
-
-
         private static IntPtr CreateUnsignedCertCntxt(string keycontainer, string provider, uint KEYSPEC, uint cspflags, string DN)
         {
             const uint AT_KEYEXCHANGE = 0x00000001;
@@ -889,10 +833,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
             return hCertCntxt;
         }
 
-
-
-
-
         private static SecureString GetSecPswd(string prompt)
         {
             SecureString password = new SecureString();
@@ -946,10 +886,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
             }
         }
 
-
-
-
-
         private static bool CompareBytearrays(byte[] a, byte[] b)
         {
             if (a.Length != b.Length)
@@ -963,10 +899,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
             }
             return true;
         }
-
-
-
-
 
         private static void showRSAProps(RSACryptoServiceProvider rsa)
         {
@@ -997,10 +929,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
             Console.WriteLine("\n\n");
         }
 
-
-
-
-
         private static byte[] GetFileBytes(string filename)
         {
             if (!File.Exists(filename))
@@ -1013,10 +941,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
             stream.Close();
             return filebytes;
         }
-
-
-
-
 
         private static void PutFileBytes(string outfile, byte[] data, int bytes)
         {
@@ -1040,10 +964,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
                 fs.Close();
             }
         }
-
-
-
-
 
         private static void showWin32Error(int errorcode)
         {

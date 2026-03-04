@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
 {
-    public class SelloDigital
+    internal class SelloDigital
     {
         public string Sellar(string CadenaOriginal, string ArchivoClavePrivada, string lPassword)
         {
@@ -201,10 +201,9 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
 
 
         }
+
         public static string md5(string Value)
         {
-
-
             //Declarations
             byte[] originalBytes;
             byte[] encodedBytes;
@@ -224,10 +223,6 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Signature
         }
         public static bool leerCER(string NombreArchivo, out string Inicio, out string Final, out string Serie, out string Numero)
         {
-
-
-
-
             if (NombreArchivo.Length < 1)
             {
                 Inicio = "";

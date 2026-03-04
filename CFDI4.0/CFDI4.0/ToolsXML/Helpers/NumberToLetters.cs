@@ -5,18 +5,18 @@ using System.Text.RegularExpressions;
 
 namespace CFDI4._0.ToolsXML.Helpers
 {
-    public class NumberToLetters
+    public static class NumberToLetters
     {
-        private string[] UNIDADES = { "", "un ", "dos ", "tres ", "cuatro ", "cinco ", "seis ", "siete ", "ocho ", "nueve " };
-        private string[] DECENAS = {"diez ", "once ", "doce ", "trece ", "catorce ", "quince ", "dieciseis ",
+        private static string[] UNIDADES = { "", "un ", "dos ", "tres ", "cuatro ", "cinco ", "seis ", "siete ", "ocho ", "nueve " };
+        private static string[] DECENAS = {"diez ", "once ", "doce ", "trece ", "catorce ", "quince ", "dieciseis ",
         "diecisiete ", "dieciocho ", "diecinueve", "veinte ", "treinta ", "cuarenta ",
         "cincuenta ", "sesenta ", "setenta ", "ochenta ", "noventa "};
-        private string[] CENTENAS = {"", "ciento ", "doscientos ", "trecientos ", "cuatrocientos ", "quinientos ", "seiscientos ",
+        private static string[] CENTENAS = {"", "ciento ", "doscientos ", "trecientos ", "cuatrocientos ", "quinientos ", "seiscientos ",
         "setecientos ", "ochocientos ", "novecientos "};
 
-        private Regex r;
+        private static Regex r;
 
-        public string Convertir(string numero, bool mayusculas, string moneda = "PESOS")
+        public static string Convertir(string numero, bool mayusculas, string moneda = "PESOS")
         {
 
             string literal = "";
@@ -86,14 +86,14 @@ namespace CFDI4._0.ToolsXML.Helpers
 
         /* funciones para convertir los numeros a literales */
 
-        private string getUnidades(string numero)
+        private static string getUnidades(string numero)
         {   // 1 - 9            
             //si tuviera algun 0 antes se lo quita -> 09 = 9 o 009=9
             string num = numero.Substring(numero.Length - 1);
             return UNIDADES[int.Parse(num)];
         }
 
-        private string getDecenas(string num)
+        private static string getDecenas(string num)
         {// 99                        
             int n = int.Parse(num);
             if (n < 10)
@@ -118,7 +118,7 @@ namespace CFDI4._0.ToolsXML.Helpers
             }
         }
 
-        private string getCentenas(string num)
+        private static string getCentenas(string num)
         {// 999 o 099
             if (int.Parse(num) > 99)
             {//es centena
@@ -138,7 +138,7 @@ namespace CFDI4._0.ToolsXML.Helpers
             }
         }
 
-        private string getMiles(string numero)
+        private static string getMiles(string numero)
         {// 999 999
             //obtiene las centenas
             string c = numero.Substring(numero.Length - 3);
@@ -158,7 +158,7 @@ namespace CFDI4._0.ToolsXML.Helpers
 
         }
 
-        private string getMillones(string numero)
+        private static string getMillones(string numero)
         { //000 000 000        
             //se obtiene los miles
             string miles = numero.Substring(numero.Length - 6);

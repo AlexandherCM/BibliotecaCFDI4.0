@@ -344,6 +344,5 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40
 
             }
         }
-        //CADENA ORIGINAL A PARTIR DEL TIMBRE FISCAL UUID - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
     }
 }

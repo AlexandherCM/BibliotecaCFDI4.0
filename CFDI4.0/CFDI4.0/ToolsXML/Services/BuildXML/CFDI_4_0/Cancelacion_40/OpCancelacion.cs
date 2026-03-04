@@ -1,24 +1,82 @@
 ﻿using CFDI4._0.ToolsXML.DTOs;
-using Org.BouncyCastle.Crypto;
-using Org.BouncyCastle.Crypto.Parameters;
-using Org.BouncyCastle.Pkcs;
-using Org.BouncyCastle.Security;
-using Org.BouncyCastle.X509;
+using CFDI4._0.ToolsXML.Helpers;
+using CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Cancelacion_40.Signature;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-using static CFDI4._0.ToolsXML.Helpers.OpXML;
 
 namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Cancelacion_40
 {
-    public class OpCancelacion
+    public class OpCancelacion : OpXML
     {
+        // ================================ METÓDOS PRIVADOS ================================
+        private string CreateCancelationXML(List<CancelacionDTO> foliosFiscales, string rfcEmisor, bool isRetencion = false)
+        {
+            XNamespace satCancelacionXmlNamespace = isRetencion ? "http://www.sat.gob.mx/esquemas/retencionpago/1" : "http://cancelacfd.sat.gob.mx";
+            var xmlSolicitud = new XElement(satCancelacionXmlNamespace + "Cancelacion",
+                                            new XAttribute(XNamespace.Xmlns + "xsi", "http://www.w3.org/2001/XMLSchema-instance"),
+                                            new XAttribute(XNamespace.Xmlns + "xsd", "http://www.w3.org/2001/XMLSchema"),
+                                            new XAttribute("Fecha", DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")),
+                                            new XAttribute("RfcEmisor", rfcEmisor),
+                                            from uuid in foliosFiscales
+                                            select new XElement(satCancelacionXmlNamespace + "Folios",
+                                                new XElement(satCancelacionXmlNamespace + "Folio",
+                                                new XAttribute("UUID", uuid.Folio.ToString()),
+                                                new XAttribute("Motivo", Convert.ToInt16(uuid.Motivo).ToString().PadLeft(2, '0')),
+                                                new XAttribute("FolioSustitucion", uuid.FolioSustitucion != null ? uuid.FolioSustitucion.ToString() : string.Empty)
+                                                )));
+            return xmlSolicitud.ToString();
+        }
+
+        private string Sign(List<CancelacionDTO> folios, string rfcEmisor, byte[] pfx, string password, bool isRetencion)
+        {
+            try
+            {
+                string xml;
+                xml = CreateCancelationXML(folios, rfcEmisor, isRetencion);
+                return SignCancelacion.SignXml(xml, pfx, password);
+            }
+            catch (CryptographicException e)
+            {
+                throw new CryptographicException("Error al sellar el XML.", e);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Los folios no tienen un formato valido.", e);
+            }
+        }
+
+        // ================================ METÓDOS PUBLICOS ================================
+        public SignResponse SellarCancelacion(List<CancelacionDTO> folios, string rfcEmisor, byte[] pfx, string password, bool isRetencion = false)
+        {
+            try
+            {
+                if (folios.Count > 0)
+                {
+                    Validation.ValidarCancelacion(folios);
+
+                    return new SignResponse()
+                    {
+                        data = new SignDataResponse()
+                        {
+                            xml = Sign(folios, rfcEmisor, pfx, password, isRetencion)
+                        }
+                    };
+                }
+
+                throw new Exception("El listado de folios esta vacio.");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Ocurrio un error {ex.Message}");
+            }
+        }
+
         //ANALIZAR EL CASO DE LA URL QUE SE COLOCA EN EL CASO DE UNA RETENCIÓN
         public string ConvertirXML(Cancelacion cancelacion)
         {

@@ -106,8 +106,7 @@ namespace CFDI4._0.CFDI
         {
             get
             {
-                NumberToLetters oMoneda = new NumberToLetters();
-                return oMoneda.Convertir(Total.ToString("#.00"), true);
+                return NumberToLetters.Convertir(Total.ToString("#.00"), true);
             }
         }
 

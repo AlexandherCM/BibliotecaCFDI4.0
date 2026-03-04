@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CFDI4._0.ToolsXML.Helpers
 {
-    public class OpXML
+    public abstract class OpXML
     {
         //CLASE PROTEGIDA QUE CONFIGURA LA CODIFICACIÓN DEL XML
         public class StringWriterWithEncoding : StringWriter
@@ -47,6 +47,5 @@ namespace CFDI4._0.ToolsXML.Helpers
             // Convertir los bytes a una cadena usando UTF-8
             return Encoding.UTF8.GetString(xmlBytes);
         }
-
     }
 }

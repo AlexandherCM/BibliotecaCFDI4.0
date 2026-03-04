@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Cancelacion_40.Signature
 {
-    public class Validation
+    internal class Validation
     {
         public static void ValidarCancelacion(List<CancelacionDTO> folios)
         {
@@ -51,13 +51,13 @@ namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Cancelacion_40.Signature
             }
         }
 
-        public class AceptacionRechazo
+        internal class AceptacionRechazo
         {
             public Guid Folio { get; set; }
             public AceptacionRechazoRespuesta Respuesta { get; set; }
         }
 
-        public enum AceptacionRechazoRespuesta
+        internal enum AceptacionRechazoRespuesta
         {
             /// <summary>
             /// Aceptar cancelación.
