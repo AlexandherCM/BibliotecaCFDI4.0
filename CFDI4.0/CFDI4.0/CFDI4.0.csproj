@@ -16,14 +16,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BouncyCastle.Cryptography" Version="2.6.2" />
     <PackageReference Include="QRCoder" Version="1.6.0" />
     <PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="ToolsXML\ProcessCFDI\ScanXML.cs">
+    <Compile Update="ToolsXML\Services\ScanXMLService.cs">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ToolsPDF\" />
   </ItemGroup>
 
 </Project>

@@ -1,8 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using CFDI4._0.ToolsPDF;
+using CFDI4._0.ToolsXML.Helpers;
 
 namespace CFDI4._0.CFDI
 {

@@ -5,7 +5,7 @@ using static QRCoder.PayloadGenerator.SwissQrCode;
 
 namespace CFDI4._0.ToolsXML.DTOs
 {
-    public class RequestApiDTO
+    public class RequestApi
     {
         public bool status { get; set; }
         public string code { get; set; }

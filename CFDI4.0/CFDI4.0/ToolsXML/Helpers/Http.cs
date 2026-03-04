@@ -4,14 +4,14 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CFDI4._0.ToolsXML
+namespace CFDI4._0.ToolsXML.Helpers
 {
     using System;
     using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
 
-    public class HttpService
+    public class Http
     {
         private readonly string contentType = "application/json";
         private readonly bool withDomUrl;
@@ -21,7 +21,7 @@ namespace CFDI4._0.ToolsXML
         private void CreateHeader(HttpClient httpClient, string jwt)
             => httpClient.DefaultRequestHeaders.Add("Authorization", $"bearer {jwt}");
 
-        public HttpService(string url = "", TimeSpan? timeout = null)
+        public Http(string url = "", TimeSpan? timeout = null)
         {
             withDomUrl = !string.IsNullOrEmpty(url);
             if (withDomUrl) _url = url;

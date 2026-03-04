@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CFDI4._0.ToolsXML
-{
+namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.ComplementosPago_40
+{   
     public static class InitObj
     {
         // FUNCIONES PARA INICIALIZAR EL OBJETO COMPROBANTE - - - - - - - - - - - - - - - - - - - - - - - - 

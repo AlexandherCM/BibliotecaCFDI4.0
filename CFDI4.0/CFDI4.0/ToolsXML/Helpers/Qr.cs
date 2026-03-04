@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace CFDI4._0.ToolsPDF
+namespace CFDI4._0.ToolsXML.Helpers
 {
     public class Qr
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace CFDI4._0.ToolsXML
+namespace CFDI4._0.ToolsXML.Helpers
 {
     public class OpXML
     {
@@ -13,12 +13,12 @@ namespace CFDI4._0.ToolsXML
             private readonly Encoding m_Encoding;
             public StringWriterWithEncoding(Encoding encoding) : base()
             {
-                this.m_Encoding = encoding;
+                m_Encoding = encoding;
             }
 
             public override Encoding Encoding
             {
-                get { return this.m_Encoding; }
+                get { return m_Encoding; }
             }
         }
 

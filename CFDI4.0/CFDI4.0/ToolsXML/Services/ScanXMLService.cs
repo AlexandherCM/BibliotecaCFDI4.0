@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Xml;
 using CFDI4._0.CFDI;
 using CFDI4._0.CFDI.EsquemaCFDI3_3;
-using CFDI4._0.ToolsXML.CFDI_3_3;
+using CFDI4._0.ToolsXML.Services.BuildXML.CFDI_3_3;
+using CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40;
 
-namespace CFDI4._0.ToolsXML.ProcessCFDI
+namespace CFDI4._0.ToolsXML.Services
 {
-    public class ScanXML
+    public class ScanXMLService
     {
         private string _XmlContent = string.Empty;
         private OpCFDI opCFDI;
         private OpCFDI_3_3 opCFDI_3_3;      
 
-        public ScanXML()
+        public ScanXMLService()
         {
             opCFDI = new OpCFDI();
             opCFDI_3_3 = new OpCFDI_3_3();  

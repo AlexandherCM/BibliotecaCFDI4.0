@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace CFDI4._0.ToolsXML.Encrypted
+namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_4_0.Comprobante_40.Encrypted
 {
     public class SelloDigital
     {

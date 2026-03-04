@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace CFDI4._0.ToolsPDF
+namespace CFDI4._0.ToolsXML.Helpers
 {
     public class NumberToLetters
     {

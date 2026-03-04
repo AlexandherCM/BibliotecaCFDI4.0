@@ -9,7 +9,7 @@ using System.Linq;
 using CFDI4._0.CFDI.EsquemaCFDI3_3;
 using ComplementoPagos10;
 
-namespace CFDI4._0.ToolsXML.CFDI_3_3
+namespace CFDI4._0.ToolsXML.Services.BuildXML.CFDI_3_3
 {
     public class OpCFDI_3_3
     {
